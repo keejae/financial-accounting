@@ -26,19 +26,18 @@ $repo = Join-Path $PSScriptRoot 'files'
 $map = [ordered]@{
 
   # ---------------- WEEK 1 ----------------
-  # Lecture 1  (Ch 0 - Color Accounting 1 & 2)  -- slides are Korean-only, reused for English
-  '1_Introduction to Accounting - Color Accounting (Korean only) - Students deploy.pptx' = 'week1\english\Wk1_L1_slides.pptx'
-  '1_Introduction to Accounting - Color Accounting (Korean only) - Students deploy.pptx#ko' = 'week1\korean\Wk1_L1_slides.pptx'
+  # Lecture 1  (Ch 0 - Color Accounting 1 & 2)  -- two Korean-only slide decks (Introduction + Classic Transactions), reused for English
+  '1_Introduction to Accounting - Color Accounting (Korean only) - Students deploy.pptx'    = 'week1\english\Wk1_L1_slides_pt1.pptx'
+  '1_Introduction to Accounting - Color Accounting (Korean only) - Students deploy.pptx#ko'  = 'week1\korean\Wk1_L1_slides_pt1.pptx'
+  '2_1_Classic Transactions Color Accounting KAIST( Korean only)  Students deploy.pptx'      = 'week1\english\Wk1_L1_slides_pt2.pptx'
+  '2_1_Classic Transactions Color Accounting KAIST( Korean only)  Students deploy.pptx#ko'    = 'week1\korean\Wk1_L1_slides_pt2.pptx'
   '1_to_2_Activity Book Color Accounting (Ch 0  English) - Students.docx'  = 'week1\english\Wk1_L1_notes.docx'
   '1_to_2_Activity Book Color Accounting (Ch 0 Korean) - Students.docx'    = 'week1\korean\Wk1_L1_notes.docx'
 
-  # Lecture 2  (Ch 0 - Color Accounting 2 & 3, T-Accounts & Journals)  -- two Korean-only slide decks, reused for English
-  '2_1_Classic Transactions Color Accounting KAIST( Korean only)  Students deploy.pptx'   = 'week1\english\Wk1_L2_slides_pt1.pptx'
-  '2_1_Classic Transactions Color Accounting KAIST( Korean only)  Students deploy.pptx#ko' = 'week1\korean\Wk1_L2_slides_pt1.pptx'
-  '2_2_Journals and T-Accounts KAIST (Korean only) Students deploy.pptx'    = 'week1\english\Wk1_L2_slides_pt2.pptx'
-  '2_2_Journals and T-Accounts KAIST (Korean only) Students deploy.pptx#ko'  = 'week1\korean\Wk1_L2_slides_pt2.pptx'
-  '1_to_2_Activity Book Color Accounting (Ch 0  English) - Students.docx#l2' = 'week1\english\Wk1_L2_notes.docx'
-  '1_to_2_Activity Book Color Accounting (Ch 0 Korean) - Students.docx#l2'   = 'week1\korean\Wk1_L2_notes.docx'
+  # Lecture 2  (Ch 0 - Color Accounting 2 & 3, Journals & T-Accounts)  -- single Korean-only deck, reused for English.
+  # (Activity Book Ch 0 lives with Lecture 1 only -- it is identical for both sessions.)
+  '2_2_Journals and T-Accounts KAIST (Korean only) Students deploy.pptx'    = 'week1\english\Wk1_L2_slides.pptx'
+  '2_2_Journals and T-Accounts KAIST (Korean only) Students deploy.pptx#ko'  = 'week1\korean\Wk1_L2_slides.pptx'
 
   # Lecture 3  (Ch 1 - Introducing Financial Accounting)
   '3_Introducting Financial Accounting  (Ch 1 English) KAIST - Professor.pptx'          = 'week1\english\Wk1_L3_slides.pptx'
