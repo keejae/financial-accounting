@@ -628,9 +628,14 @@ em { font-style: italic; }
 
 .schedule-table tbody tr:hover { background: var(--color-bg); }
 
-.schedule-table .col-session { white-space: nowrap; font-weight: 600; color: var(--color-ink); width: 1%; }
-.schedule-table .col-date { white-space: nowrap; color: var(--color-muted); width: 1%; }
-.schedule-table .col-due { color: var(--color-primary-dark); white-space: nowrap; width: 1%; }
+.schedule-table .col-session { white-space: nowrap; font-weight: 600; width: 1%; }
+.schedule-table .col-date { white-space: nowrap; width: 1%; }
+.schedule-table .col-due { white-space: nowrap; width: 1%; }
+
+/* Body-cell colors only — header cells stay white (set above) */
+.schedule-table tbody .col-session { color: var(--color-ink); }
+.schedule-table tbody .col-date { color: var(--color-muted); }
+.schedule-table tbody .col-due { color: var(--color-primary-dark); }
 
 .schedule-table tr.exam-row td {
     background: var(--color-primary-soft);

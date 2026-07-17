@@ -35,19 +35,35 @@
             <span>About</span>
         </div>
 
+        <div class="language-toggle" role="group" aria-label="Language selection">
+            <button type="button" data-lang="en" class="active">English</button>
+            <span class="divider"></span>
+            <button type="button" data-lang="ko">한국어</button>
+        </div>
+
         <div class="about-hero">
             <img class="portrait" src="photo.jpg" alt="Philip Hong" loading="lazy">
             <div class="about-info">
                 <h1>Philip Hong, Ph.D., CPA</h1>
-                <div class="about-affiliation">
-                    Professor of Accounting
-                    <span class="divider-dot">&bull;</span>
-                    Central Michigan University
+                <div class="resources active" data-lang="en">
+                    <div class="about-affiliation">
+                        Professor of Accounting
+                        <span class="divider-dot">&bull;</span>
+                        Central Michigan University
+                    </div>
+                </div>
+                <div class="resources" data-lang="ko">
+                    <div class="about-affiliation">
+                        회계학 교수
+                        <span class="divider-dot">&bull;</span>
+                        센트럴 미시간 대학교
+                    </div>
                 </div>
             </div>
         </div>
 
-        <section class="prose">
+        <!-- ==================== ENGLISH ==================== -->
+        <section class="prose resources active" data-lang="en">
             <h2>Biography</h2>
             <p>
                 Philip Keejae Hong is a Professor of Accounting at Central
@@ -66,10 +82,33 @@
             </p>
 
             <div class="cv-actions">
-                <a class="cta-button" href="CV_Philip_Keejae_Hong_April%202026.pdf" download>Download CV</a>
-                <a class="cta-button secondary" href="CV_Philip_Keejae_Hong_April%202026.pdf" target="_blank" rel="noopener">View Online</a>
+                <a class="cta-button" href="CV_Philip_Keejae_Hong_April%202026.pdf" target="_blank" rel="noopener">View CV</a>
             </div>
             <div class="cv-meta">Curriculum Vitae &middot; Last updated April 2026</div>
+        </section>
+
+        <!-- ==================== KOREAN ==================== -->
+        <section class="prose resources" data-lang="ko">
+            <h2>약력</h2>
+            <p>
+                필립 기재 홍(Philip Keejae Hong)은 센트럴 미시간 대학교(Central
+                Michigan University)의 회계학 교수입니다. 일리노이 대학교(University
+                of Illinois)에서 회계학 박사 학위를 취득한 이후 교육과 연구에
+                헌신해 왔습니다. 홍 교수는 학부 및 대학원 과정에서 재무회계,
+                회계감사, 관리회계를 가르치고 있습니다. 그의 연구는 주로
+                자본시장 참여자들이 회계 정보를 처리하고 활용하는 방식을
+                탐구합니다. 연구 성과는 <em>Accounting Horizons</em>,
+                <em>Journal of Business, Finance and Accounting</em>,
+                <em>Journal of Accounting, Auditing and Finance</em>,
+                <em>Financial Review</em>, <em>Advances in Accounting</em>,
+                <em>The International Journal of Auditing</em> 등의 학술지에
+                게재되었습니다.
+            </p>
+
+            <div class="cv-actions">
+                <a class="cta-button" href="CV_Philip_Keejae_Hong_April%202026.pdf" target="_blank" rel="noopener">이력서 보기</a>
+            </div>
+            <div class="cv-meta">이력서 (CV) &middot; 2026년 4월 최종 업데이트</div>
         </section>
 
     </div>
