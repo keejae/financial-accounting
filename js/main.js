@@ -3,6 +3,21 @@
 (function () {
     'use strict';
 
+    /* ---------- Google Analytics (GA4) ----------
+       Loads on every page (this script is included site-wide). Property: philiphong.org */
+    (function initAnalytics() {
+        var GA_ID = 'G-0SR83J0TBZ';
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+    })();
+
     /* ---------- Access gate (client-side friction only, NOT real security) ----------
        SHA-256 of the 6-digit code. A determined visitor can find this in the JS and
        brute-force the 1M-space combination. It keeps casual visitors out, no more. */
