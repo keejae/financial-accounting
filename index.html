@@ -1,50 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philip Hong | Accounting Learning Resources</title>
+    <title>Philip Hong, Ph.D., CPA | Accounting Learning Resources</title>
+    <meta name="description" content="Accounting Learning Resources by Philip Hong, Ph.D., CPA — clear concepts, practical examples, lasting understanding.">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<h1>Philip Hong</h1>
+<button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="side-nav">&#9776;</button>
 
-<h2>Accounting Learning Resources</h2>
+<nav class="side-nav" id="side-nav" aria-label="Primary">
+    <div class="brand">
+        <a class="brand-name" href="index.html">Philip Hong</a>
+        <div class="brand-credentials">Ph.D. &middot; CPA</div>
+    </div>
+    <ul class="nav-list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-footer">&copy; Philip Hong</div>
+</nav>
+<div class="nav-backdrop"></div>
 
-<h3>Introduction to Financial Accounting</h3>
+<div class="main-content">
+    <div class="container">
 
-<hr>
+        <section class="landing-hero">
+            <h1 class="landing-name">Philip Hong, Ph.D., CPA</h1>
+            <div class="landing-divider"></div>
+            <div class="landing-title">Accounting Learning Resources</div>
+            <p class="landing-tagline">Clear Concepts &middot; Practical Examples &middot; Lasting Understanding</p>
+        </section>
 
-<p>
-Welcome! This website contains lecture notes, PowerPoint slides,
-practice materials, and exam resources for Introduction to
-Financial Accounting.
-</p>
+        <section class="courses-list">
+            <a class="course-card" href="courses.html">
+                <div class="icon">&#128218;</div>
+                <div class="body">
+                    <h3>Introduction to Financial Accounting</h3>
+                    <p class="description">Course materials organized by week.</p>
+                </div>
+                <div class="action">View Course <span class="arrow">&rarr;</span></div>
+            </a>
 
-<h2>Course Materials</h2>
+            <div class="course-card upcoming" aria-disabled="true">
+                <div class="icon">&#128215;</div>
+                <div class="body">
+                    <h3>Auditing and Assurance</h3>
+                    <p class="description">Coming soon.</p>
+                </div>
+                <div class="action">Coming Soon</div>
+            </div>
 
-<ul>
+            <div class="course-card upcoming" aria-disabled="true">
+                <div class="icon">&#128217;</div>
+                <div class="body">
+                    <h3>Advanced Accounting</h3>
+                    <p class="description">Coming soon.</p>
+                </div>
+                <div class="action">Coming Soon</div>
+            </div>
+        </section>
 
-<li>Week 1</li>
+    </div>
+</div>
 
-<li>Week 2</li>
-
-<li>Week 3</li>
-
-<li>Week 4</li>
-
-<li>Exam Related Materials</li>
-
-</ul>
-
-<hr>
-
-<p>
-© Philip Hong
-</p>
-
+<script src="js/main.js"></script>
 </body>
-
 </html>
