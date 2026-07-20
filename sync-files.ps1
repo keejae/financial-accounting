@@ -82,6 +82,16 @@ $map = [ordered]@{
   '9_Ratio_Analysis (Ch_5 Korean) KAIST - Students deploy.pptx'                         = 'week3\korean\Wk3_L9_slides.pptx'
   '9_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'    = 'week3\english\Wk3_L9_notes.docx'
   '9_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'     = 'week3\korean\Wk3_L9_notes.docx'
+
+  # ---------------- SPECIAL TOPIC 1 (Introduction to Valuation) ----------------
+  # Bilingual reading primer -- Student versions only (Professor versions not posted).
+  '99_Valuation_Primer_Fin (English) - Students.docx'  = 'special1\english\ST1_Valuation_notes.docx'
+  '99_Valuation_Primer_Fin (Korean) - Students.docx'   = 'special1\korean\ST1_Valuation_notes.docx'
+
+  # ---------------- SPECIAL TOPIC 2 (Blockchain) ----------------
+  # English-only: student slide deck + lesson-plan notes.
+  '99_blockchain - PPT Slides (Students English only).pptx'         = 'special2\english\ST2_Blockchain_slides.pptx'
+  '99_Exploring Blockchain and Crytpoassets - Lesson Plans.docx'    = 'special2\english\ST2_Blockchain_notes.docx'
 }
 
 $copied  = 0

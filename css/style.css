@@ -393,6 +393,21 @@ em { font-style: italic; }
     gap: 16px;
 }
 
+/* Two-column course layout: weeks + special topics on the left,
+   exam + schedule on the right. */
+.course-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.course-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .week-card {
     display: flex;
     align-items: center;
@@ -434,6 +449,15 @@ em { font-style: italic; }
     font-size: 1.2rem;
     color: var(--color-ink);
     letter-spacing: 0.02em;
+}
+
+.week-card .week-subtitle {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    letter-spacing: 0;
+    margin-top: 4px;
 }
 
 .week-card .open-link {
@@ -847,6 +871,7 @@ em { font-style: italic; }
     .course-card .action { margin-left: 0; margin-top: 12px; }
 
     .week-grid { grid-template-columns: 1fr; }
+    .course-columns { grid-template-columns: 1fr; }
 
     .about-hero {
         flex-direction: column;
