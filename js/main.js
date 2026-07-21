@@ -53,7 +53,7 @@
               '<p>Please enter the access code provided by your instructor.</p>' +
               '<form class="access-form">' +
                 '<input type="text" class="access-input" inputmode="numeric" pattern="[0-9]*" ' +
-                       'maxlength="6" autocomplete="off" aria-label="Access code">' +
+                       'autocomplete="off" aria-label="Access code">' +
                 '<button type="submit" class="access-submit">Continue</button>' +
               '</form>' +
               '<div class="access-error" role="alert" hidden>Incorrect code. Please try again.</div>' +
