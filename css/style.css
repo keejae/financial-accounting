@@ -606,6 +606,21 @@ em { font-style: italic; }
     white-space: nowrap;
 }
 
+/* Stacked label (title + small note) — used for preview videos */
+.lecture-items .item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.lecture-items .item-note {
+    color: var(--color-muted);
+    font-size: 0.76rem;
+    font-style: italic;
+    letter-spacing: 0.01em;
+}
+
 /* ==========================================================================
    SCHEDULE PAGE — view-only table
    ========================================================================== */

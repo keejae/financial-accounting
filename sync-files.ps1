@@ -120,6 +120,35 @@ foreach ($entry in $map.GetEnumerator()) {
     Write-Host ("  OK  {0}" -f $entry.Value)
 }
 
+# ---------------- COURSE PREVIEW VIDEOS (Korean only) ----------------
+# NotebookLM / Gemini preview videos (recorded in Korean). Matched by numeric
+# prefix so we never embed Korean file names in this ANSI-read script.
+$videoSrc = Join-Path $src 'video'
+$videoMap = [ordered]@{
+  '1_*.mp4'  = 'week1\korean\Wk1_L1_preview_pt1.mp4'
+  '2_1*.mp4' = 'week1\korean\Wk1_L1_preview_pt2.mp4'
+  '2_2*.mp4' = 'week1\korean\Wk1_L2_preview.mp4'
+  '3_*.mp4'  = 'week1\korean\Wk1_L3_preview.mp4'
+  '4_*.mp4'  = 'week1\korean\Wk1_L4_preview.mp4'
+  '5_*.mp4'  = 'week2\korean\Wk2_L5_preview.mp4'
+  '6_*.mp4'  = 'week2\korean\Wk2_L6_preview.mp4'
+  '7_*.mp4'  = 'week2\korean\Wk2_L7_preview.mp4'
+  '8_*.mp4'  = 'week2\korean\Wk2_L8_preview.mp4'
+}
+if (Test-Path -LiteralPath $videoSrc) {
+    foreach ($entry in $videoMap.GetEnumerator()) {
+        $match = @(Get-ChildItem -LiteralPath $videoSrc -Filter $entry.Key -File -ErrorAction SilentlyContinue)
+        if ($match.Count -eq 0) { $missing += ('video\' + $entry.Key); continue }
+        if ($match.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $entry.Key, $match.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo $entry.Value
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $match[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ("  OK  {0}" -f $entry.Value)
+    }
+}
+
 Write-Host ""
 Write-Host ("Copied $copied file(s).")
 if ($missing.Count -gt 0) {
