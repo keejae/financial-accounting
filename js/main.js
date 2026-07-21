@@ -50,7 +50,7 @@
         gate.innerHTML =
             '<div class="access-card">' +
               '<h2>Course Access</h2>' +
-              '<p>Please enter the 6-digit access code provided by your instructor.</p>' +
+              '<p>Please enter the access code provided by your instructor.</p>' +
               '<form class="access-form">' +
                 '<input type="text" class="access-input" inputmode="numeric" pattern="[0-9]*" ' +
                        'maxlength="6" autocomplete="off" aria-label="Access code">' +
