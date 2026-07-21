@@ -134,6 +134,7 @@ $videoMap = [ordered]@{
   '6_*.mp4'  = 'week2\korean\Wk2_L6_preview.mp4'
   '7_*.mp4'  = 'week2\korean\Wk2_L7_preview.mp4'
   '8_*.mp4'  = 'week2\korean\Wk2_L8_preview.mp4'
+  '99_*.mp4' = 'special1\korean\ST1_Valuation_preview.mp4'
 }
 if (Test-Path -LiteralPath $videoSrc) {
     foreach ($entry in $videoMap.GetEnumerator()) {
