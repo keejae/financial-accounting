@@ -89,9 +89,11 @@ $map = [ordered]@{
   '99_Valuation_Primer_Fin (Korean) - Students.docx'   = 'special1\korean\ST1_Valuation_notes.docx'
 
   # ---------------- SPECIAL TOPIC 2 (Blockchain) ----------------
-  # English-only: student slide deck + lesson-plan notes.
-  '99_blockchain - PPT Slides (Students English only).pptx'         = 'special2\english\ST2_Blockchain_slides.pptx'
-  '99_Exploring Blockchain and Crytpoassets - Lesson Plans.docx'    = 'special2\english\ST2_Blockchain_notes.docx'
+  # Bilingual: student slide deck + lesson-plan notes (English & Korean).
+  '99_blockchain - PPT Slides (English).pptx'                              = 'special2\english\ST2_Blockchain_slides.pptx'
+  '99_blockchain - PPT Slides (Korean).pptx'                               = 'special2\korean\ST2_Blockchain_slides.pptx'
+  '99_Exploring Blockchain and Crytpoassets - Lesson Plans (English).docx' = 'special2\english\ST2_Blockchain_notes.docx'
+  '99_Exploring Blockchain and Crytpoassets - Lesson Plans (Korean).docx'  = 'special2\korean\ST2_Blockchain_notes.docx'
 }
 
 $copied  = 0
