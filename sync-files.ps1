@@ -150,6 +150,37 @@ if (Test-Path -LiteralPath $videoSrc) {
     }
 }
 
+# ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
+# These live in the "Other Resources web" subfolder, split into English / 한국어 language
+# subfolders. The Korean folder name and the Korean syllabus file name contain Hangul,
+# so we locate them at runtime / by ASCII wildcard to keep this ANSI-read script free of
+# non-ASCII literals (same reasoning as the video block above).
+$w0src = Join-Path $src 'Other Resources web'
+if (Test-Path -LiteralPath $w0src) {
+    $w0en    = Join-Path $w0src 'English'
+    $w0koDir = Get-ChildItem -LiteralPath $w0src -Directory | Where-Object { $_.Name -ne 'English' } | Select-Object -First 1
+    $w0ko    = if ($w0koDir) { $w0koDir.FullName } else { $null }
+
+    $w0jobs = @(
+        @{ Dir = $w0en; Filter = '*Syllabus*English*.docx';    Dest = 'week0\english\Wk0_Syllabus.docx' }
+        @{ Dir = $w0en; Filter = '*Terminology*English*.xlsx'; Dest = 'week0\english\Wk0_Terminology.xlsx' }
+        @{ Dir = $w0ko; Filter = '*Korean*.docx';              Dest = 'week0\korean\Wk0_Syllabus.docx' }
+        @{ Dir = $w0ko; Filter = '*Terminology*Korean*.xlsx';  Dest = 'week0\korean\Wk0_Terminology.xlsx' }
+    )
+    foreach ($job in $w0jobs) {
+        if (-not $job.Dir) { $missing += ('week0: ' + $job.Filter); continue }
+        $m = @(Get-ChildItem -LiteralPath $job.Dir -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($m.Count -eq 0) { $missing += ('week0: ' + $job.Filter); continue }
+        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Filter, $m.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo $job.Dest
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $m[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ("  OK  {0}" -f $job.Dest)
+    }
+}
+
 Write-Host ""
 Write-Host ("Copied $copied file(s).")
 if ($missing.Count -gt 0) {
