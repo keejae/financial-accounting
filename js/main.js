@@ -217,7 +217,7 @@
         const buttons = document.querySelectorAll('.language-toggle button');
         if (!buttons.length) return;
 
-        let initial = 'en';
+        let initial = 'ko';  /* Korean is the default view; English is one click away. */
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved === 'en' || saved === 'ko') initial = saved;
