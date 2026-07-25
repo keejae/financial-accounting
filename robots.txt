@@ -1,0 +1,4 @@
+# Ask all search engines not to crawl or index this site.
+# The site remains publicly accessible via its direct web address.
+User-agent: *
+Disallow: /
