@@ -29,8 +29,8 @@ $map = [ordered]@{
   # Lecture 1  (Ch 0 - Color Accounting 1 & 2)  -- two Korean-only slide decks (Introduction + Classic Transactions), reused for English
   '1_Introduction to Accounting - Color Accounting (Korean only) - Students deploy.pptx'    = 'week1\english\Wk1_L1_slides_pt1.pptx'
   '1_Introduction to Accounting - Color Accounting (Korean only) - Students deploy.pptx#ko'  = 'week1\korean\Wk1_L1_slides_pt1.pptx'
-  '2_1_Classic Transactions Color Accounting KAIST( Korean only)  Students deploy.pptx'      = 'week1\english\Wk1_L1_slides_pt2.pptx'
-  '2_1_Classic Transactions Color Accounting KAIST( Korean only)  Students deploy.pptx#ko'    = 'week1\korean\Wk1_L1_slides_pt2.pptx'
+  '2_1_Classic Transactions Color Accounting (Korean_only) - Students deploy.pptx'      = 'week1\english\Wk1_L1_slides_pt2.pptx'
+  '2_1_Classic Transactions Color Accounting (Korean_only) - Students deploy.pptx#ko'    = 'week1\korean\Wk1_L1_slides_pt2.pptx'
   '1_to_2_Activity Book Color Accounting (Ch 0  English) - Students.docx'  = 'week1\english\Wk1_L1_notes.docx'
   '1_to_2_Activity Book Color Accounting (Ch 0 Korean) - Students.docx'    = 'week1\korean\Wk1_L1_notes.docx'
 
