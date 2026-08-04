@@ -88,6 +88,10 @@ $map = [ordered]@{
   '9_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'    = 'week3\english\Wk3_L9_notes.docx'
   '9_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'     = 'week3\korean\Wk3_L9_notes.docx'
 
+  # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
+  # Korean only for now; add an 'inclass\english\...' line when an English version exists.
+  '5_InClass Questions Adjusting Accounts for Financial Statements (Ch 3 Korean).docx'  = 'inclass\korean\IC_L5_activities.docx'
+
   # ---------------- HOMEWORK (weeks/hw.html) ----------------
   # Sources live in the 'HW' subfolder. PROBLEMS ONLY -- the Solutions files are
   # deliberately NOT synced; they go up only after each assignment's due date.
