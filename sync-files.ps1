@@ -88,6 +88,16 @@ $map = [ordered]@{
   '9_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'    = 'week3\english\Wk3_L9_notes.docx'
   '9_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'     = 'week3\korean\Wk3_L9_notes.docx'
 
+  # ---------------- HOMEWORK (weeks/hw.html) ----------------
+  # Sources live in the 'HW' subfolder. PROBLEMS ONLY -- the Solutions files are
+  # deliberately NOT synced; they go up only after each assignment's due date.
+  'HW\5_HW Adjusting Accounts for Financial Statements (English Ch 3) - Problems.docx' = 'hw\english\HW_L5_problems.docx'
+  'HW\5_HW Adjusting Accounts for Financial Statements (Korean Ch 3) - Problems.docx'  = 'hw\korean\HW_L5_problems.docx'
+  'HW\7_HW Revenue Recognition and Acct Rec (Engslish Ch 6) - Problems.docx'           = 'hw\english\HW_L7_problems.docx'
+  'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Problems.docx'             = 'hw\korean\HW_L7_problems.docx'
+  'HW\8_HW Inventory (Engslish Ch 7) - Problems.docx'                                  = 'hw\english\HW_L8_problems.docx'
+  'HW\8_HW Inventory (Korean Ch 7) - Problems.docx'                                    = 'hw\korean\HW_L8_problems.docx'
+
   # ---------------- SPECIAL TOPIC 1 (Introduction to Valuation) ----------------
   # Bilingual reading primer -- Student versions only (Professor versions not posted).
   '99_Valuation_Primer_Fin (English) - Students.docx'  = 'special1\english\ST1_Valuation_notes.docx'
