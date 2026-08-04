@@ -33,6 +33,8 @@ $map = [ordered]@{
   '2_1_Classic Transactions Color Accounting (Korean_only) - Students deploy.pptx#ko'    = 'week1\korean\Wk1_L1_slides_pt2.pptx'
   '1_to_2_Activity Book Color Accounting (Ch 0  English) - Students.docx'  = 'week1\english\Wk1_L1_notes.docx'
   '1_to_2_Activity Book Color Accounting (Ch 0 Korean) - Students.docx'    = 'week1\korean\Wk1_L1_notes.docx'
+  # Professor (worked-answer) copies -- posted only AFTER the week has been taught.
+  '1_to_2_Activity Book Color Accounting  (Ch 0 Korean) - Professor.docx'  = 'week1\korean\Wk1_L1_notes_prof.docx'
 
   # Lecture 2  (Ch 0 - Color Accounting 2 & 3, Journals & T-Accounts)  -- single Korean-only deck, reused for English.
   # (Activity Book Ch 0 lives with Lecture 1 only -- it is identical for both sessions.)
@@ -44,17 +46,20 @@ $map = [ordered]@{
   '3_Introducing_Financial_Accounting (Ch 1 Korean_f2) KAIST - Students deploy.pptx'    = 'week1\korean\Wk1_L3_slides.pptx'
   '3_Introducing Financial Accounting  (Ch 1  English)- Students.docx'                  = 'week1\english\Wk1_L3_notes.docx'
   '3_Introducing Financial Accounting  (Ch 1  Korean)- Students.docx'                   = 'week1\korean\Wk1_L3_notes.docx'
+  '3_Introducing Financial Accounting  (Ch 1  Korean)-  Professor.docx'                 = 'week1\korean\Wk1_L3_notes_prof.docx'
 
   # Lecture 4  (Ch 2 - Constructing Financial Statements)
   '4_Constructing Financial Statements (Ch 2 English) KAIST- Professor.pptx'            = 'week1\english\Wk1_L4_slides.pptx'
   '4_Constructing_Financial_Statements (Ch 2 Korean_f2) KAIST- Students deploy.pptx'    = 'week1\korean\Wk1_L4_slides.pptx'
   '4_Constructing Financial Statements (Ch 2 English) - Students.docx'                  = 'week1\english\Wk1_L4_notes.docx'
   '4_Constructing Financial Statements (Ch 2 Korean) - Students.docx'                   = 'week1\korean\Wk1_L4_notes.docx'
+  '4_Constructing Financial Statements (Ch 2 Korean) - Professor.docx'                  = 'week1\korean\Wk1_L4_notes_prof.docx'
 
   # ---------------- WEEK 2 ----------------
   # Lecture 5  (Ch 3 - Adjusting Accounts for Financial Statements)
   '5_Adjusting Accounts for Financial Statements (Ch 3 English) KAIST - Professor.pptx'       = 'week2\english\Wk2_L5_slides.pptx'
-  '5_Adjusting_Accounts_for_Financial_Statements (Ch_3_Korean_f2)  KAIST - Students deploy.pptx' = 'week2\korean\Wk2_L5_slides.pptx'
+  # 2026-08-03: repointed off the _f2 file to the deck Philip revised directly.
+  '5_Adjusting_Accounts_for_Financial_Statements (Ch_3_Korean)  KAIST - Students deploy.pptx'    = 'week2\korean\Wk2_L5_slides.pptx'
   '5_Adjusting Accounts for Financial Statements (Ch 3 English) - Students.docx'              = 'week2\english\Wk2_L5_notes.docx'
   '5_Adjusting Accounts for Financial Statements (Ch 3 Korean) - Students.docx'               = 'week2\korean\Wk2_L5_notes.docx'
 
