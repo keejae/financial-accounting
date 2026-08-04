@@ -36,9 +36,13 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $targets = @()
 if ($Files) { $targets += $Files | ForEach-Object { (Resolve-Path -LiteralPath $_).Path } }
 if ($Path) {
-    $gci = @{ LiteralPath = $Path; File = $true; Include = @('*.docx','*.pptx','*.xlsx') }
+    # NOTE: -Include is silently IGNORED when combined with -LiteralPath, so the
+    # extension filter has to be a Where-Object. Without it this tries to open
+    # .pdf/.mp4 files as zips and dies on "End of Central Directory record".
+    $gci = @{ LiteralPath = $Path; File = $true }
     if ($Recurse) { $gci.Recurse = $true }
     $targets += Get-ChildItem @gci -ErrorAction SilentlyContinue |
+        Where-Object { $_.Extension -in '.docx','.pptx','.xlsx' } |
         Where-Object { $_.Name -notlike '~$*' } |   # skip Word/PowerPoint lock files
         Where-Object {
             # Skip anything sitting inside an excluded sub-folder (e.g. morgue).
@@ -73,9 +77,14 @@ function Set-EntryText($zip, $name, $text) {
 
 # ---- Clean ---------------------------------------------------------------
 $cleaned = 0
+$failed  = @()
 foreach ($file in $targets) {
     $changed = $false
-    $zip = [System.IO.Compression.ZipFile]::Open($file, 'Update')
+    # A file that is open in Office, or not really a zip, must not abort the run.
+    try   { $zip = [System.IO.Compression.ZipFile]::Open($file, 'Update') }
+    catch { $failed += (Split-Path -Leaf $file)
+            Write-Host ("  SKIP     {0} ({1})" -f (Split-Path -Leaf $file), $_.Exception.InnerException.Message) -ForegroundColor Yellow
+            continue }
     try {
         # core.xml -- title, author, last-modified-by
         $core = Get-EntryText $zip 'docProps/core.xml'
@@ -113,3 +122,8 @@ foreach ($file in $targets) {
 
 Write-Host ""
 Write-Host ("Cleaned $cleaned of $($targets.Count) file(s).")
+if ($failed.Count -gt 0) {
+    Write-Host ""
+    Write-Host "COULD NOT BE OPENED (still open in Office, or not a valid Office file):" -ForegroundColor Yellow
+    $failed | ForEach-Object { Write-Host ("  - {0}" -f $_) -ForegroundColor Yellow }
+}
