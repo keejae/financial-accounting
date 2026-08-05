@@ -122,9 +122,10 @@ $map = [ordered]@{
   'HW\10_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                          = 'hw\korean\HW_L13_problems.docx'
 
   # ---------------- SPECIAL TOPIC 1 (Introduction to Valuation) ----------------
-  # Bilingual reading primer -- Student versions only (Professor versions not posted).
-  '99_Valuation_Primer_Fin (English) - Students.docx'  = 'special1\english\ST1_Valuation_notes.docx'
-  '99_Valuation_Primer_Fin (Korean) - Students.docx'   = 'special1\korean\ST1_Valuation_notes.docx'
+  # REMOVED 2026-08-05 at Philip's request -- the page, its files and the Korean
+  # preview video were all taken down. The Dropbox sources
+  # ('99_Valuation_Primer_Fin (English|Korean) - Students.docx' and the 99 preview
+  # mp4) are untouched, so restoring it is just a matter of re-adding these lines.
 
   # ---------------- SPECIAL TOPIC 2 (Blockchain) ----------------
   # Bilingual: student slide deck + lesson-plan notes (English & Korean).
@@ -175,7 +176,7 @@ $videoMap = [ordered]@{
   '7_*.mp4'  = 'week2\korean\Wk2_L6_preview.mp4'
   '6_*.mp4'  = 'week2\korean\Wk2_L7_preview.mp4'
   '8_*.mp4'  = 'week3\korean\Wk3_L9_preview.mp4'
-  '99*.mp4'  = 'special1\korean\ST1_Valuation_preview.mp4'
+  # '99*.mp4' (Valuation preview) removed 2026-08-05 with the Special Topic 1 page.
 }
 if (Test-Path -LiteralPath $videoSrc) {
     foreach ($entry in $videoMap.GetEnumerator()) {
