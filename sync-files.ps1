@@ -63,44 +63,63 @@ $map = [ordered]@{
   '5_Adjusting Accounts for Financial Statements (Ch 3 English) - Students.docx'              = 'week2\english\Wk2_L5_notes.docx'
   '5_Adjusting Accounts for Financial Statements (Ch 3 Korean) - Students.docx'               = 'week2\korean\Wk2_L5_notes.docx'
 
-  # Lecture 6  (Ch 4 - Reporting and Analyzing Cash Flows)
-  '6_Statement of Cash Flows (Ch 4 English) KAIST - Professor.pptx'                     = 'week2\english\Wk2_L6_slides.pptx'
-  '6_Statement of Cash Flows (Ch 4 Korean_f2) KAIST - Students deploy.pptx'             = 'week2\korean\Wk2_L6_slides.pptx'
-  '6_Statement of Cash Flows short (Ch 4 English) -  Students.docx'                     = 'week2\english\Wk2_L6_notes.docx'
-  '6_Statement of Cash Flows short (Ch 4 Korean) - Students.docx'                       = 'week2\korean\Wk2_L6_notes.docx'
+  # Lecture 6  (Ch 6 - Revenue, Receivables & Operating Income)
+  # 2026-08-05 schedule revision: Ch 6 moved from Lecture 7 to Lecture 6 (swapped with Ch 4).
+  '7_Revenue_and_Receivables (Ch 6 English) KAIST Professor.pptx'                       = 'week2\english\Wk2_L6_slides.pptx'
+  '7_Revenue_and_Receivables (Ch 6 Korean_f2) KAIST Students deploy.pptx'               = 'week2\korean\Wk2_L6_slides.pptx'
+  '7_Revenue and Account Receivables (Ch 6 English)  shorter version - Students.docx'   = 'week2\english\Wk2_L6_notes.docx'
+  '7_Revenue and Account Receivables (Ch 6 Korean) shorter version - Students.docx'     = 'week2\korean\Wk2_L6_notes.docx'
 
-  # Lecture 7  (Ch 6 - Revenue, Receivables & Operating Income)
-  '7_Revenue_and_Receivables (Ch 6 English) KAIST Professor.pptx'                       = 'week2\english\Wk2_L7_slides.pptx'
-  '7_Revenue_and_Receivables (Ch 6 Korean_f2) KAIST Students deploy.pptx'               = 'week2\korean\Wk2_L7_slides.pptx'
-  '7_Revenue and Account Receivables (Ch 6 English)  shorter version - Students.docx'   = 'week2\english\Wk2_L7_notes.docx'
-  '7_Revenue and Account Receivables (Ch 6 Korean) shorter version - Students.docx'     = 'week2\korean\Wk2_L7_notes.docx'
+  # Lecture 7  (Ch 4 - Reporting and Analyzing Cash Flows)
+  '6_Statement of Cash Flows (Ch 4 English) KAIST - Professor.pptx'                     = 'week2\english\Wk2_L7_slides.pptx'
+  '6_Statement of Cash Flows (Ch 4 Korean_f2) KAIST - Students deploy.pptx'             = 'week2\korean\Wk2_L7_slides.pptx'
+  '6_Statement of Cash Flows short (Ch 4 English) -  Students.docx'                     = 'week2\english\Wk2_L7_notes.docx'
+  '6_Statement of Cash Flows short (Ch 4 Korean) - Students.docx'                       = 'week2\korean\Wk2_L7_notes.docx'
 
-  # Lecture 8  (Ch 7 - Reporting and Analyzing Inventory)
-  '8_Inventory (Ch 7 English) KAIS ProfessorT.pptx'                                     = 'week2\english\Wk2_L8_slides.pptx'
-  '8_Inventory (Ch 7 Korean_f2) KAIST -Students deploy.pptx'                            = 'week2\korean\Wk2_L8_slides.pptx'
-  '8_Reporting and Analyzing Inventory (Ch 7 English) - Students.docx'                  = 'week2\english\Wk2_L8_notes.docx'
-  '8_Reporting and Analyzing Inventory (Ch 7 Korean) - Students.docx'                   = 'week2\korean\Wk2_L8_notes.docx'
+  # Lecture 8  (Special Topic - Valuation Basics and P/E Ratio)
+  # Not yet posted -- Philip is still preparing this session. Add the mapping when ready.
 
   # ---------------- WEEK 3 ----------------
-  # Lecture 9  (Ch 5 - Analyzing and Interpreting Financial Statements)
-  '9_Ratio_Analysis (Ch 5 English) KAIST - Professor.pptx'                              = 'week3\english\Wk3_L9_slides.pptx'
-  '9_Ratio_Analysis (Ch_5 Korean_f2) KAIST - Students deploy.pptx'                      = 'week3\korean\Wk3_L9_slides.pptx'
-  '9_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'    = 'week3\english\Wk3_L9_notes.docx'
-  '9_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'     = 'week3\korean\Wk3_L9_notes.docx'
+  # Lecture 9  (Ch 7 - Reporting and Analyzing Inventory)   -- was Week 2 Lecture 8 before the 2026-08-05 revision
+  '8_Inventory (Ch 7 English) KAIS ProfessorT.pptx'                                     = 'week3\english\Wk3_L9_slides.pptx'
+  '8_Inventory (Ch 7 Korean_f2) KAIST -Students deploy.pptx'                            = 'week3\korean\Wk3_L9_slides.pptx'
+  '8_Reporting and Analyzing Inventory (Ch 7 English) - Students.docx'                  = 'week3\english\Wk3_L9_notes.docx'
+  '8_Reporting and Analyzing Inventory (Ch 7 Korean) - Students.docx'                   = 'week3\korean\Wk3_L9_notes.docx'
+
+  # Lecture 10 (Ch 5 - Analyzing and Interpreting Financial Statements)  -- was Lecture 9
+  '9_Ratio_Analysis (Ch 5 English) KAIST - Professor.pptx'                              = 'week3\english\Wk3_L10_slides.pptx'
+  '9_Ratio_Analysis (Ch_5 Korean_f2) KAIST - Students deploy.pptx'                      = 'week3\korean\Wk3_L10_slides.pptx'
+  '9_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'    = 'week3\english\Wk3_L10_notes.docx'
+  '9_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'     = 'week3\korean\Wk3_L10_notes.docx'
 
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.
   '5_InClass Questions Adjusting Accounts for Financial Statements (Ch 3 Korean).docx'  = 'inclass\korean\IC_L5_activities.docx'
 
-  # ---------------- HOMEWORK (weeks/hw.html) ----------------
-  # Sources live in the 'HW' subfolder. PROBLEMS ONLY -- the Solutions files are
-  # deliberately NOT synced; they go up only after each assignment's due date.
+  # ---------------- HOMEWORK (weeks/hw.html, weeks/hw-solutions.html) ----------------
+  # Sources live in the 'HW' subfolder. Its numeric file prefixes follow the ORIGINAL
+  # lecture numbering; the stable destination names follow the CURRENT (2026-08-05)
+  # schedule, so the two no longer line up -- match on the CHAPTER, not the prefix:
+  #     5_  = Ch 3 -> Lecture 5      7_  = Ch 6 -> Lecture 6
+  #     8_  = Ch 7 -> Lecture 9      9_  = Ch 5 -> Lecture 10     10_ = Ch 8 -> Lecture 13
+  # (Lecture 7 / Ch 4 has no homework.)
+  # Solutions go up in the same week the lecture is taught, so add a '_solutions' line
+  # per assignment as that week arrives -- not before.
   'HW\5_HW Adjusting Accounts for Financial Statements (English Ch 3) - Problems.docx' = 'hw\english\HW_L5_problems.docx'
   'HW\5_HW Adjusting Accounts for Financial Statements (Korean Ch 3) - Problems.docx'  = 'hw\korean\HW_L5_problems.docx'
-  'HW\7_HW Revenue Recognition and Acct Rec (Engslish Ch 6) - Problems.docx'           = 'hw\english\HW_L7_problems.docx'
-  'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Problems.docx'             = 'hw\korean\HW_L7_problems.docx'
-  'HW\8_HW Inventory (Engslish Ch 7) - Problems.docx'                                  = 'hw\english\HW_L8_problems.docx'
-  'HW\8_HW Inventory (Korean Ch 7) - Problems.docx'                                    = 'hw\korean\HW_L8_problems.docx'
+  'HW\5_HW Adjusting Accounts for Financial Statements (English Ch 3) - Solutions.docx' = 'hw\english\HW_L5_solutions.docx'
+  # NOTE: the Korean Ch 3 solutions file is spelled "Soutions" in Dropbox -- keep as is.
+  'HW\5_HW Adjusting Accounts for Financial Statements (Korean Ch 3) - Soutions.docx'  = 'hw\korean\HW_L5_solutions.docx'
+  'HW\7_HW Revenue Recognition and Acct Rec (Engslish Ch 6) - Problems.docx'           = 'hw\english\HW_L6_problems.docx'
+  'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Problems.docx'             = 'hw\korean\HW_L6_problems.docx'
+  'HW\7_HW Revenue Recognition and Acct Rec (Engslish Ch 6) - Solutions.docx'          = 'hw\english\HW_L6_solutions.docx'
+  'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Solutions.docx'            = 'hw\korean\HW_L6_solutions.docx'
+  'HW\8_HW Inventory (Engslish Ch 7) - Problems.docx'                                  = 'hw\english\HW_L9_problems.docx'
+  'HW\8_HW Inventory (Korean Ch 7) - Problems.docx'                                    = 'hw\korean\HW_L9_problems.docx'
+  'HW\9_HW Ratio Analysis  (English Ch 5) - Problems.docx'                             = 'hw\english\HW_L10_problems.docx'
+  'HW\9_HW Ratio Analysis  (Korean Ch 5) - Problems.docx'                              = 'hw\korean\HW_L10_problems.docx'
+  'HW\10_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                         = 'hw\english\HW_L13_problems.docx'
+  'HW\10_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                          = 'hw\korean\HW_L13_problems.docx'
 
   # ---------------- SPECIAL TOPIC 1 (Introduction to Valuation) ----------------
   # Bilingual reading primer -- Student versions only (Professor versions not posted).
@@ -149,11 +168,14 @@ $videoMap = [ordered]@{
   '2_2*.mp4' = 'week1\korean\Wk1_L2_preview.mp4'
   '3_*.mp4'  = 'week1\korean\Wk1_L3_preview.mp4'
   '4_*.mp4'  = 'week1\korean\Wk1_L4_preview.mp4'
+  # 2026-08-05: prefixes still follow the ORIGINAL lecture numbering, destinations follow
+  # the CURRENT schedule -- 7_ (Ch 6) is now Lecture 6, 6_ (Ch 4) is Lecture 7, 8_ (Ch 7)
+  # moved to Week 3 Lecture 9.
   '5_*.mp4'  = 'week2\korean\Wk2_L5_preview.mp4'
-  '6_*.mp4'  = 'week2\korean\Wk2_L6_preview.mp4'
-  '7_*.mp4'  = 'week2\korean\Wk2_L7_preview.mp4'
-  '8_*.mp4'  = 'week2\korean\Wk2_L8_preview.mp4'
-  '99_*.mp4' = 'special1\korean\ST1_Valuation_preview.mp4'
+  '7_*.mp4'  = 'week2\korean\Wk2_L6_preview.mp4'
+  '6_*.mp4'  = 'week2\korean\Wk2_L7_preview.mp4'
+  '8_*.mp4'  = 'week3\korean\Wk3_L9_preview.mp4'
+  '99*.mp4'  = 'special1\korean\ST1_Valuation_preview.mp4'
 }
 if (Test-Path -LiteralPath $videoSrc) {
     foreach ($entry in $videoMap.GetEnumerator()) {
