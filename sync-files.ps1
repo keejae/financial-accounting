@@ -94,7 +94,11 @@ $map = [ordered]@{
 
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.
+  # Destination lecture numbers follow the CURRENT schedule, source prefixes the original
+  # one -- match on the CHAPTER (the '7_' file is Ch 6, which is now Lecture 6).
+  # STUDENT copies only -- never map the '... InClass Professor Copy.docx' files.
   '5_InClass Questions Adjusting Accounts for Financial Statements (Ch 3 Korean).docx'  = 'inclass\korean\IC_L5_activities.docx'
+  '7_Revenue and Account Receivables - InClass Problems.pdf'                            = 'inclass\korean\IC_L6_activities.pdf'
 
   # ---------------- HOMEWORK (weeks/hw.html, weeks/hw-solutions.html) ----------------
   # Sources live in the 'HW' subfolder. Its numeric file prefixes follow the ORIGINAL
