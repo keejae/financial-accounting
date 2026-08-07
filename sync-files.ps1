@@ -125,6 +125,9 @@ $map = [ordered]@{
   'HW\10_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                         = 'hw\english\HW_L13_problems.docx'
   'HW\10_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                          = 'hw\korean\HW_L13_problems.docx'
 
+  # (Week 2 Lecture 8 - Valuation special topic - and its in-class files are handled
+  #  by the runtime block further down: their names contain Hangul.)
+
   # ---------------- SPECIAL TOPIC 1 (Introduction to Valuation) ----------------
   # REMOVED 2026-08-05 at Philip's request -- the page, its files and the Korean
   # preview video were all taken down. The Dropbox sources
@@ -193,6 +196,41 @@ if (Test-Path -LiteralPath $videoSrc) {
         Copy-Item -LiteralPath $match[0].FullName -Destination $dstPath -Force
         $copied++
         Write-Host ("  OK  {0}" -f $entry.Value)
+    }
+}
+
+# ---------------- WEEK 2 LECTURE 8 + ITS IN-CLASS FILES (Valuation special topic) ----------------
+# Sources live in the '0_Valuation' subfolder. Several file names contain Hangul, so
+# they are matched at runtime by ASCII wildcard rather than written as literals -- this
+# .ps1 is read as ANSI by Windows PowerShell 5.1 and Korean literals would be mangled
+# (same reasoning as the video and Week 0 blocks).
+# Lecture notes are posted as PDF (not .docx) at Philip's request; Student versions only.
+$valSrc = Join-Path $src '0_Valuation'
+if (Test-Path -LiteralPath $valSrc) {
+    $valJobs = @(
+        # Lecture 8 slides + notes
+        @{ Filter = '99_Valuation Primer (English)*Professor*.pptx'; Dest = 'week2\english\Wk2_L8_slides.pptx' }
+        @{ Filter = '99_Valuation_Primer_*KAIST-Professor.pptx';     Dest = 'week2\korean\Wk2_L8_slides.pptx' }
+        @{ Filter = '99_Valuation_Primer (English) Students.pdf';    Dest = 'week2\english\Wk2_L8_notes.pdf' }
+        # Korean notes: same pattern as the English one, so exclude the English match.
+        @{ Filter = '99_Valuation_Primer (*) Students.pdf'; Exclude = 'English'
+           Dest = 'week2\korean\Wk2_L8_notes.pdf' }
+        # In-class activity files for Lecture 8
+        @{ Filter = '99_*Memory_Big3_10Y_Key_Metrics*.xlsx'; Dest = 'inclass\korean\IC_L8_memory3_metrics.xlsx' }
+        @{ Filter = '99_SKhynix_FCFF_Valuation_Korean.xlsx'; Dest = 'inclass\korean\IC_L8_skhynix_fcff.xlsx' }
+        @{ Filter = '99_SKhynix_*.pdf';                      Dest = 'inclass\korean\IC_L8_skhynix_financials.pdf' }
+    )
+    foreach ($job in $valJobs) {
+        $m = @(Get-ChildItem -LiteralPath $valSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
+        if ($m.Count -eq 0) { $missing += ('0_Valuation: ' + $job.Filter); continue }
+        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Filter, $m.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo $job.Dest
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $m[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ("  OK  {0}" -f $job.Dest)
     }
 }
 
