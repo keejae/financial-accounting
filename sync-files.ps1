@@ -207,6 +207,11 @@ if (Test-Path -LiteralPath $videoSrc) {
 # Lecture notes are posted as PDF (not .docx) at Philip's request; Student versions only.
 $valSrc = Join-Path $src '0_Valuation'
 if (Test-Path -LiteralPath $valSrc) {
+    # Some files differ ONLY in Hangul (학생용 = student vs 교수용 = professor), so an ASCII
+    # wildcard cannot tell them apart. Build the marker from code points instead -- the
+    # script source stays pure ASCII, and the string is correct at runtime.
+    $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # 학생용
+
     $valJobs = @(
         # Lecture 8 slides + notes
         @{ Filter = '99_Valuation Primer (English)*Professor*.pptx'; Dest = 'week2\english\Wk2_L8_slides.pptx' }
@@ -219,10 +224,15 @@ if (Test-Path -LiteralPath $valSrc) {
         @{ Filter = '99_*Memory_Big3_10Y_Key_Metrics*.xlsx'; Dest = 'inclass\korean\IC_L8_memory3_metrics.xlsx' }
         @{ Filter = '99_SKhynix_FCFF_Valuation_Korean.xlsx'; Dest = 'inclass\korean\IC_L8_skhynix_fcff.xlsx' }
         @{ Filter = '99_SKhynix_*.pdf';                      Dest = 'inclass\korean\IC_L8_skhynix_financials.pdf' }
+        # Practice problems -- STUDENT copy only. The professor copy sits beside it with an
+        # identical ASCII name shape, so it is selected by the Hangul marker above.
+        @{ Filter = '99_Valuation_Primer_*.docx'; Include = $KO_STUDENT
+           Dest = 'inclass\korean\IC_L8_practice_problems.docx' }
     )
     foreach ($job in $valJobs) {
         $m = @(Get-ChildItem -LiteralPath $valSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
         if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
+        if ($job.Include) { $m = @($m | Where-Object { $_.Name -like     ('*' + $job.Include + '*') }) }
         if ($m.Count -eq 0) { $missing += ('0_Valuation: ' + $job.Filter); continue }
         if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Filter, $m.Count) -ForegroundColor Yellow }
         $dstPath = Join-Path $repo $job.Dest
