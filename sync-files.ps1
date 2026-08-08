@@ -211,6 +211,7 @@ if (Test-Path -LiteralPath $valSrc) {
     # wildcard cannot tell them apart. Build the marker from code points instead -- the
     # script source stays pure ASCII, and the string is correct at runtime.
     $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # 학생용
+    $KO_PROF    = [string]::Concat([char]0xAD50, [char]0xC218, [char]0xC6A9)   # 교수용
 
     $valJobs = @(
         # Lecture 8 slides + notes
@@ -228,6 +229,13 @@ if (Test-Path -LiteralPath $valSrc) {
         # identical ASCII name shape, so it is selected by the Hangul marker above.
         @{ Filter = '99_Valuation_Primer_*.docx'; Include = $KO_STUDENT
            Dest = 'inclass\korean\IC_L8_practice_problems.docx' }
+        # ---- Professor (answer-key) copies, released once the lecture has been taught ----
+        @{ Filter = '99_Valuation_Primer (English) Professor.docx'
+           Dest = 'week2\english\Wk2_L8_notes_prof.docx' }
+        @{ Filter = '99_Valuation_Primer (*) Professor.docx'; Exclude = 'English'
+           Dest = 'week2\korean\Wk2_L8_notes_prof.docx' }
+        @{ Filter = '99_Valuation_Primer_*.docx'; Include = $KO_PROF
+           Dest = 'inclass\korean\IC_L8_practice_solutions.docx' }
     )
     foreach ($job in $valJobs) {
         $m = @(Get-ChildItem -LiteralPath $valSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
