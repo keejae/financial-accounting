@@ -853,6 +853,96 @@ em { font-style: italic; }
 }
 
 /* ==========================================================================
+   ANNOUNCEMENTS
+   ========================================================================== */
+.notice-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 22px;
+    margin-bottom: 28px;
+    background-color: var(--color-primary-soft);
+    border-left: 3px solid var(--color-primary);
+    color: var(--color-ink);
+    transition: box-shadow 0.15s ease;
+}
+
+a.notice-banner:hover {
+    text-decoration: none;
+    box-shadow: var(--shadow-card-hover);
+}
+
+.notice-banner .notice-tag {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
+}
+
+.notice-banner .notice-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.96rem;
+    color: var(--color-ink-soft);
+}
+
+.notice-banner .notice-open {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.announcement {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-line);
+    border-left: 3px solid var(--color-primary);
+    box-shadow: var(--shadow-card);
+    padding: 30px 34px;
+    margin-bottom: 30px;
+}
+
+.announcement-meta {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+}
+
+.announcement-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.announcement .lecture-divider { margin-bottom: 22px; }
+
+.announcement-questions {
+    list-style: none;
+    max-width: 720px;
+    margin: 0 0 1.2rem;
+    padding-left: 18px;
+    border-left: 2px solid var(--color-line);
+}
+
+.announcement-questions li {
+    font-size: 1.02rem;
+    color: var(--color-ink-soft);
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.announcement-questions li:last-child { margin-bottom: 0; }
+
+.announcement-cta {
+    margin: 6px 0 26px;
+}
+
+/* ==========================================================================
    RESPONSIVE — Mobile ( < 768px )
    ========================================================================== */
 @media (max-width: 767px) {
@@ -905,6 +995,17 @@ em { font-style: italic; }
         align-items: flex-start;
         gap: 6px;
     }
+
+    .notice-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 16px 18px;
+    }
+
+    .announcement { padding: 24px 20px; }
+    .announcement-title { font-size: 1.25rem; }
+    .announcement-cta .cta-button { width: 100%; text-align: center; padding: 12px 18px; }
 }
 
 /* ==========================================================================
