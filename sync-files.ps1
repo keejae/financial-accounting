@@ -81,16 +81,27 @@ $map = [ordered]@{
 
   # ---------------- WEEK 3 ----------------
   # Lecture 9  (Ch 7 - Reporting and Analyzing Inventory)   -- was Week 2 Lecture 8 before the 2026-08-05 revision
-  '8_Inventory (Ch 7 English) KAIS ProfessorT.pptx'                                     = 'week3\english\Wk3_L9_slides.pptx'
-  '8_Inventory (Ch 7 Korean_f2) KAIST -Students deploy.pptx'                            = 'week3\korean\Wk3_L9_slides.pptx'
-  '8_Reporting and Analyzing Inventory (Ch 7 English) - Students.docx'                  = 'week3\english\Wk3_L9_notes.docx'
-  '8_Reporting and Analyzing Inventory (Ch 7 Korean) - Students.docx'                   = 'week3\korean\Wk3_L9_notes.docx'
+  # 2026-08-10: Philip renamed these sources from the '8_' prefix to '9_' to match the current
+  # schedule, and now publishes BOTH the slides and the notes as PDF (not .pptx / .docx).
+  # The English deck is the Students version as of 2026-08-10 (it used to be the Professor one).
+  # NOTE: 'KAIST  Students.pdf' really does carry two spaces -- keep it exact.
+  '9_Inventory (Ch 7 English) KAIST  Students.pdf'                                      = 'week3\english\Wk3_L9_slides.pdf'
+  '9_Inventory (Ch 7 Korean_f2) KAIST -Students deploy pptx.pdf'                        = 'week3\korean\Wk3_L9_slides.pdf'
+  '9_Reporting and Analyzing Inventory (Ch 7 English) - Students.pdf'                   = 'week3\english\Wk3_L9_notes.pdf'
+  '9_Reporting and Analyzing Inventory (Ch 7 Korean) - Students.pdf'                    = 'week3\korean\Wk3_L9_notes.pdf'
 
   # Lecture 10 (Ch 5 - Analyzing and Interpreting Financial Statements)  -- was Lecture 9
-  '9_Ratio_Analysis (Ch 5 English) KAIST - Professor.pptx'                              = 'week3\english\Wk3_L10_slides.pptx'
-  '9_Ratio_Analysis (Ch_5 Korean_f2) KAIST - Students deploy.pptx'                      = 'week3\korean\Wk3_L10_slides.pptx'
-  '9_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'    = 'week3\english\Wk3_L10_notes.docx'
-  '9_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'     = 'week3\korean\Wk3_L10_notes.docx'
+  # 2026-08-10: sources renamed from the '9_' prefix to '10_' for the same reason. Still
+  # .pptx / .docx -- only Lecture 9 has moved to PDF so far.
+  '10_Ratio_Analysis (Ch 5 English) KAIST - Professor.pptx'                             = 'week3\english\Wk3_L10_slides.pptx'
+  # The Korean '_f2' deck was moved into Morgue\ on 2026-08-10, so there is no live source
+  # for Wk3_L10_slides.pptx right now. The non-'_f2' file sitting in the notes root is a
+  # DIFFERENT, older deck (7.5 MB vs 4.0 MB), so it is deliberately NOT wired up here --
+  # repointing would swap the deck students already have. The published copy is left as is.
+  # Re-enable this line (or point it at whichever deck is current) once Philip confirms.
+  # '10_Ratio_Analysis (Ch_5 Korean_f2) KAIST - Students deploy.pptx'                   = 'week3\korean\Wk3_L10_slides.pptx'
+  '10_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'   = 'week3\english\Wk3_L10_notes.docx'
+  '10_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'    = 'week3\korean\Wk3_L10_notes.docx'
 
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.

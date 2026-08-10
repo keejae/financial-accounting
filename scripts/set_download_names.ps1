@@ -1,5 +1,12 @@
 # Sets the download="" (student-facing filename) on each week page to the
 # original descriptive source filename, while leaving href paths untouched.
+#
+# !! STALE -- DO NOT RUN AS-IS (noted 2026-08-10) !!
+# This was a one-off written BEFORE the 2026-08-05 schedule revision, so its map still
+# uses the old lecture numbering (Ch 7 as "Wk2_L8", Ch 5 as "Wk3_L9") and the old .pptx /
+# .docx extensions for Lecture 9, which now publishes as PDF. Running it today would
+# overwrite the correct download names with wrong ones. Rebuild the map from the current
+# sync-files.ps1 before ever using it again; download names are maintained by hand for now.
 $repo = "C:\Users\hong1p\Documents\GitHub\financial-accounting"
 
 # hrefPath (as written in HTML)  =>  original source filename (raw)
