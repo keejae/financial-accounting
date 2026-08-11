@@ -131,10 +131,18 @@ $map = [ordered]@{
   'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Solutions.docx'            = 'hw\korean\HW_L6_solutions.docx'
   'HW\9_HW Inventory (Engslish Ch 7) - Problems.docx'                                  = 'hw\english\HW_L9_problems.docx'
   'HW\9_HW Inventory (Korean Ch 7) - Problems.docx'                                    = 'hw\korean\HW_L9_problems.docx'
+  'HW\9_HW Inventory (Engslish Ch 7) - Solutions.docx'                                 = 'hw\english\HW_L9_solutions.docx'
+  'HW\9_HW Inventory (Korean Ch 7) - Solutions.docx'                                   = 'hw\korean\HW_L9_solutions.docx'
   'HW\10_HW Ratio Analysis  (English Ch 5) - Problems.docx'                            = 'hw\english\HW_L10_problems.docx'
   'HW\10_HW Ratio Analysis  (Korean Ch 5) - Problems.docx'                             = 'hw\korean\HW_L10_problems.docx'
-  'HW\11_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                         = 'hw\english\HW_L13_problems.docx'
-  'HW\11_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                          = 'hw\korean\HW_L13_problems.docx'
+  'HW\10_HW Ratio Analysis  (English Ch 5) - Solutions.docx'                           = 'hw\english\HW_L10_solutions.docx'
+  'HW\10_HW Ratio Analysis  (Korean Ch 5) - Solutions.docx'                            = 'hw\korean\HW_L10_solutions.docx'
+  # Lecture 13 (Ch 8 - Long-Term Operating Assets) was REMOVED from both HW pages on
+  # 2026-08-10: it is a Week 4 topic and will be added back with that week. The Dropbox
+  # sources ('HW\11_HW Long-Lived  Assets (English|Korean Ch 8) - Problems|Solutions.docx')
+  # are untouched, so restoring it is just re-adding these two lines plus the page entries.
+  # 'HW\11_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                       = 'hw\english\HW_L13_problems.docx'
+  # 'HW\11_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                        = 'hw\korean\HW_L13_problems.docx'
 
   # (Week 2 Lecture 8 - Valuation special topic - and its in-class files are handled
   #  by the runtime block further down: their names contain Hangul.)
