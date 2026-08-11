@@ -91,17 +91,15 @@ $map = [ordered]@{
   '9_Reporting and Analyzing Inventory (Ch 7 Korean) - Students.pdf'                    = 'week3\korean\Wk3_L9_notes.pdf'
 
   # Lecture 10 (Ch 5 - Analyzing and Interpreting Financial Statements)  -- was Lecture 9
-  # 2026-08-10: sources renamed from the '9_' prefix to '10_' for the same reason. Still
-  # .pptx / .docx -- only Lecture 9 has moved to PDF so far.
-  '10_Ratio_Analysis (Ch 5 English) KAIST - Professor.pptx'                             = 'week3\english\Wk3_L10_slides.pptx'
-  # The Korean '_f2' deck was moved into Morgue\ on 2026-08-10, so there is no live source
-  # for Wk3_L10_slides.pptx right now. The non-'_f2' file sitting in the notes root is a
-  # DIFFERENT, older deck (7.5 MB vs 4.0 MB), so it is deliberately NOT wired up here --
-  # repointing would swap the deck students already have. The published copy is left as is.
-  # Re-enable this line (or point it at whichever deck is current) once Philip confirms.
-  # '10_Ratio_Analysis (Ch_5 Korean_f2) KAIST - Students deploy.pptx'                   = 'week3\korean\Wk3_L10_slides.pptx'
-  '10_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.docx'   = 'week3\english\Wk3_L10_notes.docx'
-  '10_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.docx'    = 'week3\korean\Wk3_L10_notes.docx'
+  # 2026-08-10: sources renamed from the '9_' prefix to '10_', and this lecture now
+  # publishes as PDF too -- students said .pptx / .docx are hard to read on a tablet.
+  # STUDENT versions only, both languages. The earlier ambiguity over which Korean deck
+  # was current is settled: Philip exported the PDF from the non-'_f2' deck, so the '_f2'
+  # files parked in Morgue\ are dead and the Korean slides now come from that PDF.
+  '10_Ratio_Analysis (Ch 5 English) KAIST - Students.pdf'                               = 'week3\english\Wk3_L10_slides.pdf'
+  '10_Ratio_Analysis (Ch_5 Korean) KAIST - Students deploy.pdf'                         = 'week3\korean\Wk3_L10_slides.pdf'
+  '10_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.pdf'    = 'week3\english\Wk3_L10_notes.pdf'
+  '10_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.pdf'     = 'week3\korean\Wk3_L10_notes.pdf'
 
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.
@@ -112,11 +110,13 @@ $map = [ordered]@{
   '7_Revenue and Account Receivables - InClass Problems.pdf'                            = 'inclass\korean\IC_L6_activities.pdf'
 
   # ---------------- HOMEWORK (weeks/hw.html, weeks/hw-solutions.html) ----------------
-  # Sources live in the 'HW' subfolder. Its numeric file prefixes follow the ORIGINAL
-  # lecture numbering; the stable destination names follow the CURRENT (2026-08-05)
-  # schedule, so the two no longer line up -- match on the CHAPTER, not the prefix:
+  # Sources live in the 'HW' subfolder. Philip renumbered these prefixes on 2026-08-10
+  # (Ch 7: 8_ -> 9_, Ch 5: 9_ -> 10_, Ch 8: 10_ -> 11_), so most now line up with the
+  # lecture number -- but NOT all of them. Ch 8 is prefixed 11_ while the schedule page
+  # calls it session 13 (sessions 11/12 are the Aug 15 holiday). So the rule still stands:
+  # match on the CHAPTER, never on the prefix.
   #     5_  = Ch 3 -> Lecture 5      7_  = Ch 6 -> Lecture 6
-  #     8_  = Ch 7 -> Lecture 9      9_  = Ch 5 -> Lecture 10     10_ = Ch 8 -> Lecture 13
+  #     9_  = Ch 7 -> Lecture 9      10_ = Ch 5 -> Lecture 10     11_ = Ch 8 -> Lecture 13
   # (Lecture 7 / Ch 4 has no homework.)
   # Solutions go up in the same week the lecture is taught, so add a '_solutions' line
   # per assignment as that week arrives -- not before.
@@ -129,12 +129,12 @@ $map = [ordered]@{
   'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Problems.docx'             = 'hw\korean\HW_L6_problems.docx'
   'HW\7_HW Revenue Recognition and Acct Rec (Engslish Ch 6) - Solutions.docx'          = 'hw\english\HW_L6_solutions.docx'
   'HW\7_HW Revenue Recognition and Acct Rec (Korean Ch 6) - Solutions.docx'            = 'hw\korean\HW_L6_solutions.docx'
-  'HW\8_HW Inventory (Engslish Ch 7) - Problems.docx'                                  = 'hw\english\HW_L9_problems.docx'
-  'HW\8_HW Inventory (Korean Ch 7) - Problems.docx'                                    = 'hw\korean\HW_L9_problems.docx'
-  'HW\9_HW Ratio Analysis  (English Ch 5) - Problems.docx'                             = 'hw\english\HW_L10_problems.docx'
-  'HW\9_HW Ratio Analysis  (Korean Ch 5) - Problems.docx'                              = 'hw\korean\HW_L10_problems.docx'
-  'HW\10_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                         = 'hw\english\HW_L13_problems.docx'
-  'HW\10_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                          = 'hw\korean\HW_L13_problems.docx'
+  'HW\9_HW Inventory (Engslish Ch 7) - Problems.docx'                                  = 'hw\english\HW_L9_problems.docx'
+  'HW\9_HW Inventory (Korean Ch 7) - Problems.docx'                                    = 'hw\korean\HW_L9_problems.docx'
+  'HW\10_HW Ratio Analysis  (English Ch 5) - Problems.docx'                            = 'hw\english\HW_L10_problems.docx'
+  'HW\10_HW Ratio Analysis  (Korean Ch 5) - Problems.docx'                             = 'hw\korean\HW_L10_problems.docx'
+  'HW\11_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                         = 'hw\english\HW_L13_problems.docx'
+  'HW\11_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                          = 'hw\korean\HW_L13_problems.docx'
 
   # (Week 2 Lecture 8 - Valuation special topic - and its in-class files are handled
   #  by the runtime block further down: their names contain Hangul.)
