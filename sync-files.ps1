@@ -271,6 +271,39 @@ if (Test-Path -LiteralPath $valSrc) {
     }
 }
 
+# ---------------- LECTURE 10 IN-CLASS (Ch 5 ratio analysis worksheet) ----------------
+# Sources live in the '1_Ratio Analysis' subfolder. Every file name there is entirely
+# Hangul, so nothing can be written as a literal in this ANSI-read .ps1 -- match on the
+# extension and separate student from professor with the 학생용 / 교수용 code-point marker
+# (same technique as the 0_Valuation block above).
+# The 'morgue' subfolder holds superseded copies and is skipped (no -Recurse).
+$ratSrc = Join-Path $src '1_Ratio Analysis'
+if (Test-Path -LiteralPath $ratSrc) {
+    $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # 학생용
+    $KO_PROF    = [string]::Concat([char]0xAD50, [char]0xC218, [char]0xC6A9)   # 교수용
+
+    $ratJobs = @(
+        # STUDENT worksheet only. The professor answer key (해답지_교수용.pdf) sits beside it
+        # with the same .pdf shape, so it is excluded by the Hangul marker -- posting it
+        # would hand students the worked answers.
+        @{ Filter = '*.pdf'; Include = $KO_STUDENT; Exclude = $KO_PROF
+           Dest = 'inclass\korean\IC_L10_activities.pdf' }
+    )
+    foreach ($job in $ratJobs) {
+        $m = @(Get-ChildItem -LiteralPath $ratSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
+        if ($job.Include) { $m = @($m | Where-Object { $_.Name -like     ('*' + $job.Include + '*') }) }
+        if ($m.Count -eq 0) { $missing += ('1_Ratio Analysis: ' + $job.Dest); continue }
+        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Dest, $m.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo $job.Dest
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $m[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ("  OK  {0}" -f $job.Dest)
+    }
+}
+
 # ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
 # These live in the "Other Resources web" subfolder, split into English / 한국어 language
 # subfolders. The Korean folder name and the Korean syllabus file name contain Hangul,
