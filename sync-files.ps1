@@ -283,11 +283,14 @@ if (Test-Path -LiteralPath $ratSrc) {
     $KO_PROF    = [string]::Concat([char]0xAD50, [char]0xC218, [char]0xC6A9)   # 교수용
 
     $ratJobs = @(
-        # STUDENT worksheet only. The professor answer key (해답지_교수용.pdf) sits beside it
-        # with the same .pdf shape, so it is excluded by the Hangul marker -- posting it
-        # would hand students the worked answers.
+        # STUDENT worksheet. The professor answer key sits beside it with the same .pdf
+        # shape, so the two are separated by the Hangul marker.
         @{ Filter = '*.pdf'; Include = $KO_STUDENT; Exclude = $KO_PROF
            Dest = 'inclass\korean\IC_L10_activities.pdf' }
+        # PROFESSOR answer key -- released now that Lecture 10 has been taught, same as the
+        # Lecture 8 practice solutions above.
+        @{ Filter = '*.pdf'; Include = $KO_PROF; Exclude = $KO_STUDENT
+           Dest = 'inclass\korean\IC_L10_solutions.pdf' }
     )
     foreach ($job in $ratJobs) {
         $m = @(Get-ChildItem -LiteralPath $ratSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
