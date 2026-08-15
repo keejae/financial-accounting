@@ -939,6 +939,9 @@ a.notice-banner:hover {
 .announcement-questions li:last-child { margin-bottom: 0; }
 
 .announcement-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     margin: 6px 0 26px;
 }
 
