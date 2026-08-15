@@ -101,6 +101,17 @@ $map = [ordered]@{
   '10_Analyzing and Interpreting Financial Statements (Ch 5 English) - Students.pdf'    = 'week3\english\Wk3_L10_notes.pdf'
   '10_Analyzing and Interpreting Financial Statements (Ch 5 Korean) - Students.pdf'     = 'week3\korean\Wk3_L10_notes.pdf'
 
+  # ---------------- WEEK 4 ----------------
+  # Sessions 11 and 12 (Aug 15, Sat) are the Liberation Day holiday -- no class -- so
+  # Week 4 opens at Lecture 13. PDF only, STUDENT versions only; the .pptx / .docx
+  # sources sit beside these in Dropbox and are deliberately NOT mapped.
+  # Watch the double space in "Operating  Assets", and the Korean notes filename is
+  # missing its closing parenthesis ("Ch 8 Korean- Students") -- both kept verbatim.
+  '13_LongTerm_Operating_Assets (Ch 8 English) _KAIST_Students.pdf'                     = 'week4\english\Wk4_L13_slides.pdf'
+  '13_LongTerm_Operating_Assets (Ch 8 Korean) _KAIST_students.pdf'                      = 'week4\korean\Wk4_L13_slides.pdf'
+  '13_Long-term Operating  Assets (Ch 8 English) - Students.pdf'                        = 'week4\english\Wk4_L13_notes.pdf'
+  '13_Long-term Operating  Assets (Ch 8 Korean- Students.pdf'                           = 'week4\korean\Wk4_L13_notes.pdf'
+
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.
   # Destination lecture numbers follow the CURRENT schedule, source prefixes the original
@@ -137,12 +148,13 @@ $map = [ordered]@{
   'HW\10_HW Ratio Analysis  (Korean Ch 5) - Problems.docx'                             = 'hw\korean\HW_L10_problems.docx'
   'HW\10_HW Ratio Analysis  (English Ch 5) - Solutions.docx'                           = 'hw\english\HW_L10_solutions.docx'
   'HW\10_HW Ratio Analysis  (Korean Ch 5) - Solutions.docx'                            = 'hw\korean\HW_L10_solutions.docx'
-  # Lecture 13 (Ch 8 - Long-Term Operating Assets) was REMOVED from both HW pages on
-  # 2026-08-10: it is a Week 4 topic and will be added back with that week. The Dropbox
-  # sources ('HW\11_HW Long-Lived  Assets (English|Korean Ch 8) - Problems|Solutions.docx')
-  # are untouched, so restoring it is just re-adding these two lines plus the page entries.
-  # 'HW\11_HW Long-Lived  Assets (English Ch 8) - Problems.docx'                       = 'hw\english\HW_L13_problems.docx'
-  # 'HW\11_HW Long-Lived  Assets (Korean Ch 8) - Problems.docx'                        = 'hw\korean\HW_L13_problems.docx'
+  # Lecture 13 (Ch 8) restored 2026-08-14 with Week 4. Its Dropbox prefix moved 11_ -> 13_
+  # (so it now matches the lecture number) and Philip exported PDFs, which is what we post
+  # -- the .docx sources sit beside them and are deliberately NOT mapped.
+  'HW\13_HW Long-Lived  Assets (English Ch 8) - Problems.pdf'                          = 'hw\english\HW_L13_problems.pdf'
+  'HW\13_HW Long-Lived  Assets (Korean Ch 8) - Problems.pdf'                           = 'hw\korean\HW_L13_problems.pdf'
+  'HW\13_HW Long-Lived  Assets (English Ch 8) - Solutions.pdf'                         = 'hw\english\HW_L13_solutions.pdf'
+  'HW\13_HW Long-Lived  Assets (Korean Ch 8) - Solutions.pdf'                          = 'hw\korean\HW_L13_solutions.pdf'
 
   # (Week 2 Lecture 8 - Valuation special topic - and its in-class files are handled
   #  by the runtime block further down: their names contain Hangul.)
@@ -340,6 +352,17 @@ if (Test-Path -LiteralPath $w0src) {
 
 Write-Host ""
 Write-Host ("Copied $copied file(s).")
+
+# Word/PowerPoint sometimes stamp "Hong, Philip Keejae" into an exported PDF's /Author and
+# XMP metadata, and copying from Dropbox brings that stamp along -- so scrub the published
+# copies on every sync. Idempotent and length-preserving; leaves the Dropbox originals alone.
+$pdfScrub = Join-Path $PSScriptRoot 'scripts\strip_pdf_metadata.ps1'
+if (Test-Path -LiteralPath $pdfScrub) {
+    Write-Host ""
+    Write-Host "Scrubbing PDF metadata..."
+    & $pdfScrub -Path $repo -Recurse
+}
+
 if ($missing.Count -gt 0) {
     Write-Host ""
     Write-Host "MISSING SOURCE FILES (not found in Dropbox folder):" -ForegroundColor Yellow
