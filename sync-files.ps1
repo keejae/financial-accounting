@@ -351,6 +351,35 @@ if (Test-Path -LiteralPath $exSrc) {
     }
 }
 
+# ---------------- EXAM PAGE (old exam: Summer 2025 Celebration of Learning #1) ----------------
+# These come from LAST YEAR's course tree ('0_2025_Summer\0_My Kaist MBA\Exam'), three
+# levels up from the notes folder. The file names start with 번역 ("translated") but the
+# rest is ASCII, so a leading-wildcard filter is enough -- no code-point markers needed.
+# The PDFs are bilingual (English question with the Korean translation inline), so the
+# same file is served on BOTH tabs, the way the Korean-only Week 1 decks are reused.
+$oldExam = Join-Path (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $src))) '0_2025_Summer\0_My Kaist MBA\Exam'
+if (Test-Path -LiteralPath $oldExam) {
+    $oeJobs = @(
+        @{ Filter = '*Exam 1 summer 2025 Kaist Problems only.pdf'
+           Dest = @('exam\english\EX_2025_Exam1_problems.pdf', 'exam\korean\EX_2025_Exam1_problems.pdf') }
+        @{ Filter = '*Exam 1 summer 2025 Kaist - Key.pdf'
+           Dest = @('exam\english\EX_2025_Exam1_solutions.pdf', 'exam\korean\EX_2025_Exam1_solutions.pdf') }
+    )
+    foreach ($job in $oeJobs) {
+        $m = @(Get-ChildItem -LiteralPath $oldExam -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($m.Count -eq 0) { $missing += ('2025 Exam: ' + $job.Filter); continue }
+        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Filter, $m.Count) -ForegroundColor Yellow }
+        foreach ($dest in $job.Dest) {
+            $dstPath = Join-Path $repo $dest
+            $dstDir  = Split-Path -Parent $dstPath
+            if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+            Copy-Item -LiteralPath $m[0].FullName -Destination $dstPath -Force
+            $copied++
+            Write-Host ("  OK  {0}" -f $dest)
+        }
+    }
+}
+
 # ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
 # The terminology glossaries live in the "Other Resources web" subfolder, split into
 # English / 한국어 language subfolders. The Korean folder name contains Hangul, so we locate
