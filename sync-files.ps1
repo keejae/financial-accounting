@@ -319,6 +319,38 @@ if (Test-Path -LiteralPath $ratSrc) {
     }
 }
 
+# ---------------- EXAM PAGE (pop quiz over Lecture Notes 1-9) ----------------
+# Sources live in 'Exam\Exams' -- a SIBLING of the notes folder, like 0_Admin. Every file
+# name there is Hangul, so match on the extension and split student from answer key with
+# the 학생용 / 답지 code-point markers (same technique as the 0_Valuation block above).
+# The 'morgue' subfolder holds retired exams from earlier years and is skipped (no -Recurse).
+# Korean only -- no English version of the quiz exists.
+$exSrc = Join-Path (Split-Path -Parent $src) 'Exam\Exams'
+if (Test-Path -LiteralPath $exSrc) {
+    $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # 학생용
+    $KO_KEY     = [string]::Concat([char]0xB2F5, [char]0xC9C0)                # 답지
+
+    $exJobs = @(
+        @{ Filter = '*.pdf'; Include = $KO_STUDENT; Exclude = $KO_KEY
+           Dest = 'exam\korean\EX_popquiz_student.pdf' }
+        @{ Filter = '*.pdf'; Include = $KO_KEY; Exclude = $KO_STUDENT
+           Dest = 'exam\korean\EX_popquiz_key.pdf' }
+    )
+    foreach ($job in $exJobs) {
+        $m = @(Get-ChildItem -LiteralPath $exSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
+        if ($job.Include) { $m = @($m | Where-Object { $_.Name -like     ('*' + $job.Include + '*') }) }
+        if ($m.Count -eq 0) { $missing += ('Exam\Exams: ' + $job.Dest); continue }
+        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Dest, $m.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo $job.Dest
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $m[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ("  OK  {0}" -f $job.Dest)
+    }
+}
+
 # ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
 # The terminology glossaries live in the "Other Resources web" subfolder, split into
 # English / 한국어 language subfolders. The Korean folder name contains Hangul, so we locate
