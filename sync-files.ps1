@@ -320,27 +320,45 @@ if (Test-Path -LiteralPath $ratSrc) {
 }
 
 # ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
-# These live in the "Other Resources web" subfolder, split into English / 한국어 language
-# subfolders. The Korean folder name and the Korean syllabus file name contain Hangul,
-# so we locate them at runtime / by ASCII wildcard to keep this ANSI-read script free of
-# non-ASCII literals (same reasoning as the video block above).
+# The terminology glossaries live in the "Other Resources web" subfolder, split into
+# English / 한국어 language subfolders. The Korean folder name contains Hangul, so we locate
+# it at runtime to keep this ANSI-read script free of non-ASCII literals (same reasoning as
+# the video block above).
+#
+# The SYLLABUS is different: as of 2026-08-14 it comes straight from '0_Admin' (a SIBLING
+# of the notes folder, not a subfolder), which is where Philip actually edits it -- the
+# copies under 'Other Resources web' were a stale second home and that copy step is gone.
+# It publishes as PDF now, like the lectures. Both jobs take the MOST RECENTLY MODIFIED
+# match rather than a dated file name, so a re-revision ("... revised 8_14_2026.pdf" ->
+# some later name) is picked up without editing this script.
 $w0src = Join-Path $src 'Other Resources web'
+$admin = Join-Path (Split-Path -Parent $src) '0_Admin'
 if (Test-Path -LiteralPath $w0src) {
     $w0en    = Join-Path $w0src 'English'
     $w0koDir = Get-ChildItem -LiteralPath $w0src -Directory | Where-Object { $_.Name -ne 'English' } | Select-Object -First 1
     $w0ko    = if ($w0koDir) { $w0koDir.FullName } else { $null }
+    $w0admin = if (Test-Path -LiteralPath $admin) { $admin } else { $null }
 
     $w0jobs = @(
-        @{ Dir = $w0en; Filter = '*Syllabus*English*.docx';    Dest = 'week0\english\Wk0_Syllabus.docx' }
+        # Syllabus -- English name is ASCII; the Korean one is '..._강의계획서 한국어 ....pdf',
+        # so it is matched as "the BAF50002 PDF that is not the English one".
+        @{ Dir = $w0admin; Filter = 'BAF50002_Syllabus*.pdf'; Newest = $true
+           Dest = 'week0\english\Wk0_Syllabus.pdf' }
+        @{ Dir = $w0admin; Filter = 'BAF50002_*.pdf'; Exclude = 'Syllabus'; Newest = $true
+           Dest = 'week0\korean\Wk0_Syllabus.pdf' }
         @{ Dir = $w0en; Filter = '*Terminology*English*.xlsx'; Dest = 'week0\english\Wk0_Terminology.xlsx' }
-        @{ Dir = $w0ko; Filter = '*Korean*.docx';              Dest = 'week0\korean\Wk0_Syllabus.docx' }
         @{ Dir = $w0ko; Filter = '*Terminology*Korean*.xlsx';  Dest = 'week0\korean\Wk0_Terminology.xlsx' }
     )
     foreach ($job in $w0jobs) {
         if (-not $job.Dir) { $missing += ('week0: ' + $job.Filter); continue }
         $m = @(Get-ChildItem -LiteralPath $job.Dir -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
         if ($m.Count -eq 0) { $missing += ('week0: ' + $job.Filter); continue }
-        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Filter, $m.Count) -ForegroundColor Yellow }
+        if ($job.Newest) {
+            $m = @($m | Sort-Object LastWriteTime -Descending)
+        } elseif ($m.Count -gt 1) {
+            Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Filter, $m.Count) -ForegroundColor Yellow
+        }
         $dstPath = Join-Path $repo $job.Dest
         $dstDir  = Split-Path -Parent $dstPath
         if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
