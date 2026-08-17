@@ -105,12 +105,14 @@ $map = [ordered]@{
   # Sessions 11 and 12 (Aug 15, Sat) are the Liberation Day holiday -- no class -- so
   # Week 4 opens at Lecture 13. PDF only, STUDENT versions only; the .pptx / .docx
   # sources sit beside these in Dropbox and are deliberately NOT mapped.
-  # Watch the double space in "Operating  Assets", and the Korean notes filename is
-  # missing its closing parenthesis ("Ch 8 Korean- Students") -- both kept verbatim.
+  # Watch the double space in "Operating  Assets", kept verbatim. The Korean notes file
+  # used to be missing its closing parenthesis; Philip fixed the name on 2026-08-16 when
+  # he re-exported the revised notes, so it is now "(Ch 8 Korean)- Students.pdf"
+  # (still no space before the hyphen, unlike the English one).
   '13_LongTerm_Operating_Assets (Ch 8 English) _KAIST_Students.pdf'                     = 'week4\english\Wk4_L13_slides.pdf'
   '13_LongTerm_Operating_Assets (Ch 8 Korean) _KAIST_students.pdf'                      = 'week4\korean\Wk4_L13_slides.pdf'
   '13_Long-term Operating  Assets (Ch 8 English) - Students.pdf'                        = 'week4\english\Wk4_L13_notes.pdf'
-  '13_Long-term Operating  Assets (Ch 8 Korean- Students.pdf'                           = 'week4\korean\Wk4_L13_notes.pdf'
+  '13_Long-term Operating  Assets (Ch 8 Korean)- Students.pdf'                          = 'week4\korean\Wk4_L13_notes.pdf'
 
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.
