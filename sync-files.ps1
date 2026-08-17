@@ -110,9 +110,12 @@ $map = [ordered]@{
   # he re-exported the revised notes, so it is now "(Ch 8 Korean)- Students.pdf"
   # (still no space before the hyphen, unlike the English one).
   '13_LongTerm_Operating_Assets (Ch 8 English) _KAIST_Students.pdf'                     = 'week4\english\Wk4_L13_slides.pdf'
-  # Korean slides re-exported 2026-08-17 under an all-underscore name (the deck made a
-  # round trip through Drive); the old "(Ch 8 Korean) _KAIST_students.pdf" is in Morgue.
-  '13_LongTerm_Operating_Assets__Ch_8_Korean___KAIST_Students.pdf'                      = 'week4\korean\Wk4_L13_slides.pdf'
+  # Korean slides re-exported twice on 2026-08-17: first under an all-underscore name (a
+  # Drive round trip), then again with the discussion answers blanked -- that second export
+  # kept a " pptx" before the extension, so the name is verbatim ugly on purpose. The
+  # original "(Ch 8 Korean) _KAIST_students.pdf" is in Morgue. Re-check this key whenever
+  # he re-exports; a rename shows up as a MISSING SOURCE warning at the end of the run.
+  '13_LongTerm_Operating_Assets__Ch_8_Korean___KAIST_students pptx.pdf'                 = 'week4\korean\Wk4_L13_slides.pdf'
   '13_Long-term Operating  Assets (Ch 8 English) - Students.pdf'                        = 'week4\english\Wk4_L13_notes.pdf'
   '13_Long-term Operating  Assets (Ch 8 Korean)- Students.pdf'                          = 'week4\korean\Wk4_L13_notes.pdf'
 
