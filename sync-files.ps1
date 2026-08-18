@@ -332,6 +332,24 @@ if (Test-Path -LiteralPath $ratSrc) {
     }
 }
 
+# ---------------- LECTURE 15 IN-CLASS (Ch 11 comprehensive income / AOCI one-pager) ----------------
+# This one sits in the notes root, not a subfolder, and its name is Hangul apart from the
+# '15_' prefix and 'AOCI' -- so it cannot go in the $map table above (this .ps1 is read as
+# ANSI by PowerShell 5.1 and Korean literals would be mangled). Matched by ASCII wildcard.
+# Korean only -- there is no English version of this handout.
+$aociMatch = @(Get-ChildItem -LiteralPath $src -Filter '15_*AOCI*.pdf' -File -ErrorAction SilentlyContinue)
+if ($aociMatch.Count -eq 0) {
+    $missing += 'inclass\korean\IC_L15_aoci.pdf'
+} else {
+    if ($aociMatch.Count -gt 1) { Write-Host ("  WARN IC_L15_aoci.pdf matched {0} files; using first" -f $aociMatch.Count) -ForegroundColor Yellow }
+    $dstPath = Join-Path $repo 'inclass\korean\IC_L15_aoci.pdf'
+    $dstDir  = Split-Path -Parent $dstPath
+    if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+    Copy-Item -LiteralPath $aociMatch[0].FullName -Destination $dstPath -Force
+    $copied++
+    Write-Host '  OK  inclass\korean\IC_L15_aoci.pdf'
+}
+
 # ---------------- EXAM PAGE (pop quiz over Lecture Notes 1-9) ----------------
 # Sources live in 'Exam' -- a SIBLING of the notes folder, like 0_Admin. These used to sit
 # in 'Exam\Exams', but that subfolder is gone as of 2026-08-17, which made this block skip
