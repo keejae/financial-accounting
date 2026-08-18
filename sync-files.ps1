@@ -127,6 +127,16 @@ $map = [ordered]@{
   '13_Long-term Operating  Assets (Ch 8 English) - Professor.pdf'                       = 'week4\english\Wk4_L13_notes_prof.pdf'
   '13_Long-term Operating  Assets (Ch 8 Korean)- Professor.pdf'                         = 'week4\korean\Wk4_L13_notes_prof.pdf'
 
+  # Lecture 14 covers two parts, 14A (Ch 9 liabilities) and 14B (Ch 10 leases, pensions
+  # and income taxes), so the session gets two sets of notes rather than one. STUDENT
+  # versions only, PDF, both languages -- no slides for this session.
+  # Watch the spacing: 14A has no space before its hyphen, and 14B carries double spaces
+  # around "Income  Taxes" and before "(Ch 10".
+  '14A_Liabilities (Ch 9 English)- Students.pdf'                                        = 'week4\english\Wk4_L14A_notes.pdf'
+  '14A_Liabilities (Ch 9 Korean) - Students.pdf'                                        = 'week4\korean\Wk4_L14A_notes.pdf'
+  '14B_Leases Pensions and  Income  Taxes  (Ch 10 English) - Students.pdf'              = 'week4\english\Wk4_L14B_notes.pdf'
+  '14B_Leases Pensions and  Income  Taxes  (Ch 10 Korean) - Students.pdf'               = 'week4\korean\Wk4_L14B_notes.pdf'
+
   # Lecture 15 (Ch 11, Shareholders' Equity): STUDENT lecture notes only, PDF, both
   # languages. Philip asked for just these two -- no slides. The apostrophe in
   # "Shareholders'" is doubled because these keys are single-quoted PowerShell strings.
