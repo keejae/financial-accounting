@@ -327,27 +327,60 @@ if (Test-Path -LiteralPath $ratSrc) {
 }
 
 # ---------------- EXAM PAGE (pop quiz over Lecture Notes 1-9) ----------------
-# Sources live in 'Exam\Exams' -- a SIBLING of the notes folder, like 0_Admin. Every file
-# name there is Hangul, so match on the extension and split student from answer key with
-# the 학생용 / 답지 code-point markers (same technique as the 0_Valuation block above).
-# The 'morgue' subfolder holds retired exams from earlier years and is skipped (no -Recurse).
+# Sources live in 'Exam' -- a SIBLING of the notes folder, like 0_Admin. These used to sit
+# in 'Exam\Exams', but that subfolder is gone as of 2026-08-17, which made this block skip
+# silently (it is wrapped in a Test-Path). Filenames are Hangul apart from the lecture
+# range, so filter on '*1-9*.pdf' -- that also keeps the question-bank PDFs ('1-13') in the
+# same folder from matching -- and split student from answer key with the 학생용 / 답지
+# code-point markers (same technique as the 0_Valuation block above).
 # Korean only -- no English version of the quiz exists.
-$exSrc = Join-Path (Split-Path -Parent $src) 'Exam\Exams'
+$exSrc = Join-Path (Split-Path -Parent $src) 'Exam'
 if (Test-Path -LiteralPath $exSrc) {
     $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # 학생용
     $KO_KEY     = [string]::Concat([char]0xB2F5, [char]0xC9C0)                # 답지
 
     $exJobs = @(
-        @{ Filter = '*.pdf'; Include = $KO_STUDENT; Exclude = $KO_KEY
+        @{ Filter = '*1-9*.pdf'; Include = $KO_STUDENT; Exclude = $KO_KEY
            Dest = 'exam\korean\EX_popquiz_student.pdf' }
-        @{ Filter = '*.pdf'; Include = $KO_KEY; Exclude = $KO_STUDENT
+        @{ Filter = '*1-9*.pdf'; Include = $KO_KEY; Exclude = $KO_STUDENT
            Dest = 'exam\korean\EX_popquiz_key.pdf' }
     )
     foreach ($job in $exJobs) {
         $m = @(Get-ChildItem -LiteralPath $exSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
         if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
         if ($job.Include) { $m = @($m | Where-Object { $_.Name -like     ('*' + $job.Include + '*') }) }
-        if ($m.Count -eq 0) { $missing += ('Exam\Exams: ' + $job.Dest); continue }
+        if ($m.Count -eq 0) { $missing += ('Exam: ' + $job.Dest); continue }
+        if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Dest, $m.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo $job.Dest
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $m[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ("  OK  {0}" -f $job.Dest)
+    }
+}
+
+# ---------------- EXAM PAGE (question bank over Lectures 1-13) ----------------
+# Sources sit in 'Exam' itself, one level ABOVE the pop-quiz files in 'Exam\Exams'.
+# Both names are Hangul apart from the lecture range, so filter on '*1-13*.pdf' and split
+# student from answer key with the 학생용 / 교수용 code-point markers.
+# Korean only -- the English edition of the question bank was never exported to PDF.
+$qbSrc = Join-Path (Split-Path -Parent $src) 'Exam'
+if (Test-Path -LiteralPath $qbSrc) {
+    $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # 학생용
+    $KO_PROF    = [string]::Concat([char]0xAD50, [char]0xC218, [char]0xC6A9)   # 교수용
+
+    $qbJobs = @(
+        @{ Filter = '*1-13*.pdf'; Include = $KO_STUDENT; Exclude = $KO_PROF
+           Dest = 'exam\korean\EX_questionbank_student.pdf' }
+        @{ Filter = '*1-13*.pdf'; Include = $KO_PROF; Exclude = $KO_STUDENT
+           Dest = 'exam\korean\EX_questionbank_key.pdf' }
+    )
+    foreach ($job in $qbJobs) {
+        $m = @(Get-ChildItem -LiteralPath $qbSrc -Filter $job.Filter -File -ErrorAction SilentlyContinue)
+        if ($job.Exclude) { $m = @($m | Where-Object { $_.Name -notlike ('*' + $job.Exclude + '*') }) }
+        if ($job.Include) { $m = @($m | Where-Object { $_.Name -like     ('*' + $job.Include + '*') }) }
+        if ($m.Count -eq 0) { $missing += ('Exam: ' + $job.Dest); continue }
         if ($m.Count -gt 1) { Write-Host ("  WARN {0} matched {1} files; using first" -f $job.Dest, $m.Count) -ForegroundColor Yellow }
         $dstPath = Join-Path $repo $job.Dest
         $dstDir  = Split-Path -Parent $dstPath
