@@ -119,6 +119,14 @@ $map = [ordered]@{
   '13_Long-term Operating  Assets (Ch 8 English) - Students.pdf'                        = 'week4\english\Wk4_L13_notes.pdf'
   '13_Long-term Operating  Assets (Ch 8 Korean)- Students.pdf'                          = 'week4\korean\Wk4_L13_notes.pdf'
 
+  # Lecture 13 PROFESSOR (answer-key) notes, released now that the lecture has been taught.
+  # Philip asked for PDF; as of 2026-08-18 only the .docx professor copies exist in Dropbox,
+  # so these two keys report as MISSING SOURCE until he exports them. Keep the names exactly
+  # as below (note the double space in "Operating  Assets", and that the Korean file has no
+  # space before its hyphen) and one sync run publishes them.
+  '13_Long-term Operating  Assets (Ch 8 English) - Professor.pdf'                       = 'week4\english\Wk4_L13_notes_prof.pdf'
+  '13_Long-term Operating  Assets (Ch 8 Korean)- Professor.pdf'                         = 'week4\korean\Wk4_L13_notes_prof.pdf'
+
   # Lecture 15 (Ch 11, Shareholders' Equity): STUDENT lecture notes only, PDF, both
   # languages. Philip asked for just these two -- no slides. The apostrophe in
   # "Shareholders'" is doubled because these keys are single-quoted PowerShell strings.
