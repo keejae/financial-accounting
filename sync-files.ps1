@@ -119,6 +119,12 @@ $map = [ordered]@{
   '13_Long-term Operating  Assets (Ch 8 English) - Students.pdf'                        = 'week4\english\Wk4_L13_notes.pdf'
   '13_Long-term Operating  Assets (Ch 8 Korean)- Students.pdf'                          = 'week4\korean\Wk4_L13_notes.pdf'
 
+  # Lecture 15 (Ch 11, Shareholders' Equity): STUDENT lecture notes only, PDF, both
+  # languages. Philip asked for just these two -- no slides. The apostrophe in
+  # "Shareholders'" is doubled because these keys are single-quoted PowerShell strings.
+  '15_Shareholders'' Equity (Ch 11 English) - Students.pdf'                             = 'week4\english\Wk4_L15_notes.pdf'
+  '15_Shareholders'' Equity (Ch 11 Korean) - Students.pdf'                              = 'week4\korean\Wk4_L15_notes.pdf'
+
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
   # Korean only for now; add an 'inclass\english\...' line when an English version exists.
   # Destination lecture numbers follow the CURRENT schedule, source prefixes the original
