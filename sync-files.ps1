@@ -144,12 +144,17 @@ $map = [ordered]@{
   '15_Shareholders'' Equity (Ch 11 Korean) - Students.pdf'                              = 'week4\korean\Wk4_L15_notes.pdf'
 
   # ---------------- IN-CLASS ACTIVITIES (weeks/inclass.html) ----------------
-  # Korean only for now; add an 'inclass\english\...' line when an English version exists.
+  # Mostly Korean; add an 'inclass\english\...' line when an English version exists.
   # Destination lecture numbers follow the CURRENT schedule, source prefixes the original
   # one -- match on the CHAPTER (the '7_' file is Ch 6, which is now Lecture 6).
   # STUDENT copies only -- never map the '... InClass Professor Copy.docx' files.
   '5_InClass Questions Adjusting Accounts for Financial Statements (Ch 3 Korean).docx'  = 'inclass\korean\IC_L5_activities.docx'
   '7_Revenue and Account Receivables - InClass Problems.pdf'                            = 'inclass\korean\IC_L6_activities.pdf'
+  # Lecture 14 (Ch 10) IBM consolidated balance sheet handout -- the PDF is BILINGUAL
+  # (English line items with Korean glosses), so the SAME source file is posted on both
+  # tabs via the '#ko' duplicate-key trick. First real English in-class entry.
+  '14B_IBM_Balance_Sheet.pdf'                                                           = 'inclass\english\IC_L14_ibm_balance_sheet.pdf'
+  '14B_IBM_Balance_Sheet.pdf#ko'                                                        = 'inclass\korean\IC_L14_ibm_balance_sheet.pdf'
 
   # ---------------- HOMEWORK (weeks/hw.html, weeks/hw-solutions.html) ----------------
   # Sources live in the 'HW' subfolder. Philip renumbered these prefixes on 2026-08-10
