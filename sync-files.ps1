@@ -150,11 +150,19 @@ $map = [ordered]@{
   # STUDENT copies only -- never map the '... InClass Professor Copy.docx' files.
   '5_InClass Questions Adjusting Accounts for Financial Statements (Ch 3 Korean).docx'  = 'inclass\korean\IC_L5_activities.docx'
   '7_Revenue and Account Receivables - InClass Problems.pdf'                            = 'inclass\korean\IC_L6_activities.pdf'
-  # Lecture 14 (Ch 10) IBM consolidated balance sheet handout -- the PDF is BILINGUAL
-  # (English line items with Korean glosses), so the SAME source file is posted on both
-  # tabs via the '#ko' duplicate-key trick. First real English in-class entry.
-  '14B_IBM_Balance_Sheet.pdf'                                                           = 'inclass\english\IC_L14_ibm_balance_sheet.pdf'
-  '14B_IBM_Balance_Sheet.pdf#ko'                                                        = 'inclass\korean\IC_L14_ibm_balance_sheet.pdf'
+  # COURSE REVIEW -- IBM FY2025 Form 10-K statements, posted after Lecture 15 (2026-08-20).
+  # These four PDFs are BILINGUAL (English line items with Korean glosses), so the SAME
+  # source file goes to both tabs via the '#ko' duplicate-key trick. The balance sheet was
+  # briefly posted as a Lecture 14 handout ('14B_IBM_Balance_Sheet.pdf'); Philip renamed it
+  # to the '99_' review prefix, so do NOT look for the 14B name any more.
+  # The 4th file (comprehensive income, two formats) has a Hangul name -> handled by the
+  # wildcard block further down, not here.
+  '99_IBM_Balance_Sheet_KR.pdf'                                                         = 'inclass\english\IC_REV_ibm_balance_sheet.pdf'
+  '99_IBM_Balance_Sheet_KR.pdf#ko'                                                      = 'inclass\korean\IC_REV_ibm_balance_sheet.pdf'
+  '99_IBM_Income_Statement_KR.pdf'                                                      = 'inclass\english\IC_REV_ibm_income_statement.pdf'
+  '99_IBM_Income_Statement_KR.pdf#ko'                                                   = 'inclass\korean\IC_REV_ibm_income_statement.pdf'
+  '99_IBM_Cash_Flow_Statement_KR.pdf'                                                   = 'inclass\english\IC_REV_ibm_cash_flow.pdf'
+  '99_IBM_Cash_Flow_Statement_KR.pdf#ko'                                                = 'inclass\korean\IC_REV_ibm_cash_flow.pdf'
 
   # ---------------- HOMEWORK (weeks/hw.html, weeks/hw-solutions.html) ----------------
   # Sources live in the 'HW' subfolder. Philip renumbered these prefixes on 2026-08-10
@@ -371,6 +379,28 @@ if ($aociMatch.Count -eq 0) {
     Copy-Item -LiteralPath $aociMatch[0].FullName -Destination $dstPath -Force
     $copied++
     Write-Host '  OK  inclass\korean\IC_L15_aoci.pdf'
+}
+
+# ---------------- COURSE REVIEW: IBM COMPREHENSIVE INCOME (two formats) ----------------
+# Sits in the notes root next to the other three '99_IBM_*' review statements, but its name
+# is Hangul apart from the '99_IBM_' prefix and '_KR' -- so it cannot go in the $map table
+# above (this .ps1 is read as ANSI by PowerShell 5.1 and Korean literals would be mangled).
+# Matched by wildcard, then the three ASCII-named siblings are excluded. Bilingual -> both tabs.
+$ciSkip  = @('99_IBM_Balance_Sheet_KR.pdf','99_IBM_Income_Statement_KR.pdf','99_IBM_Cash_Flow_Statement_KR.pdf')
+$ciMatch = @(Get-ChildItem -LiteralPath $src -Filter '99_IBM_*.pdf' -File -ErrorAction SilentlyContinue |
+            Where-Object { $ciSkip -notcontains $_.Name })
+if ($ciMatch.Count -eq 0) {
+    $missing += 'inclass\*\IC_REV_ibm_comprehensive_income.pdf'
+} else {
+    if ($ciMatch.Count -gt 1) { Write-Host ("  WARN IC_REV_ibm_comprehensive_income.pdf matched {0} files; using first" -f $ciMatch.Count) -ForegroundColor Yellow }
+    foreach ($lang in @('english','korean')) {
+        $dstPath = Join-Path $repo ('inclass\' + $lang + '\IC_REV_ibm_comprehensive_income.pdf')
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $ciMatch[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host ('  OK  inclass\' + $lang + '\IC_REV_ibm_comprehensive_income.pdf')
+    }
 }
 
 # ---------------- EXAM PAGE (pop quiz over Lecture Notes 1-9) ----------------
