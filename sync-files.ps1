@@ -497,26 +497,27 @@ if (Test-Path -LiteralPath $oldExam) {
     }
 }
 
-# ---------------- EXAM PAGE (course review keyword sheet, Lectures 1-15) ----------------
-# Sits in the same 'Exam' folder as the pop quiz and the question bank. The name is Hangul
-# apart from the lecture range, so filter on '*1-15*.pdf' -- that cannot collide with the
-# pop quiz ('1-9') or the question bank ('1-13') beside it. Korean only: the English edition
-# exists as a .docx in C:\Downloads but Philip did not export it to PDF.
-$rvSrc = Join-Path (Split-Path -Parent $src) 'Exam'
-if (Test-Path -LiteralPath $rvSrc) {
-    $rvMatch = @(Get-ChildItem -LiteralPath $rvSrc -Filter '*1-15*.pdf' -File -ErrorAction SilentlyContinue)
-    if ($rvMatch.Count -eq 0) {
-        $missing += 'Exam: exam\korean\EX_review_keywords.pdf'
-    } else {
-        if ($rvMatch.Count -gt 1) { Write-Host ("  WARN EX_review_keywords.pdf matched {0} files; using first" -f $rvMatch.Count) -ForegroundColor Yellow }
-        $dstPath = Join-Path $repo 'exam\korean\EX_review_keywords.pdf'
-        $dstDir  = Split-Path -Parent $dstPath
-        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
-        Copy-Item -LiteralPath $rvMatch[0].FullName -Destination $dstPath -Force
-        $copied++
-        Write-Host '  OK  exam\korean\EX_review_keywords.pdf'
-    }
-}
+# ---------------- EXAM PAGE (course review keyword sheet) -- REMOVED 2026-08-21 ----------------
+# Posted and then pulled the same day at Philip's request -- he is rebuilding the sheet. The
+# mapping is kept here, commented out, so it can be restored in one edit. Filter '*1-15*.pdf'
+# cannot collide with the pop quiz ('1-9') or the question bank ('1-13') in the same folder.
+# Korean only. Uncomment this block and re-add the two <li> entries (weeks/exam.html under
+# the Exam Preparation block, weeks/week4.html under Session 16) to put it back.
+#
+# $rvSrc = Join-Path (Split-Path -Parent $src) 'Exam'
+# if (Test-Path -LiteralPath $rvSrc) {
+#     $rvMatch = @(Get-ChildItem -LiteralPath $rvSrc -Filter '*1-15*.pdf' -File -ErrorAction SilentlyContinue)
+#     if ($rvMatch.Count -eq 0) {
+#         $missing += 'Exam: exam\korean\EX_review_keywords.pdf'
+#     } else {
+#         $dstPath = Join-Path $repo 'exam\korean\EX_review_keywords.pdf'
+#         $dstDir  = Split-Path -Parent $dstPath
+#         if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+#         Copy-Item -LiteralPath $rvMatch[0].FullName -Destination $dstPath -Force
+#         $copied++
+#         Write-Host '  OK  exam\korean\EX_review_keywords.pdf'
+#     }
+# }
 
 # ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
 # The terminology glossaries live in the "Other Resources web" subfolder, split into
