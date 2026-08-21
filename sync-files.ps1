@@ -497,27 +497,34 @@ if (Test-Path -LiteralPath $oldExam) {
     }
 }
 
-# ---------------- EXAM PAGE (course review keyword sheet) -- REMOVED 2026-08-21 ----------------
-# Posted and then pulled the same day at Philip's request -- he is rebuilding the sheet. The
-# mapping is kept here, commented out, so it can be restored in one edit. Filter '*1-15*.pdf'
-# cannot collide with the pop quiz ('1-9') or the question bank ('1-13') in the same folder.
-# Korean only. Uncomment this block and re-add the two <li> entries (weeks/exam.html under
-# the Exam Preparation block, weeks/week4.html under Session 16) to put it back.
-#
-# $rvSrc = Join-Path (Split-Path -Parent $src) 'Exam'
-# if (Test-Path -LiteralPath $rvSrc) {
-#     $rvMatch = @(Get-ChildItem -LiteralPath $rvSrc -Filter '*1-15*.pdf' -File -ErrorAction SilentlyContinue)
-#     if ($rvMatch.Count -eq 0) {
-#         $missing += 'Exam: exam\korean\EX_review_keywords.pdf'
-#     } else {
-#         $dstPath = Join-Path $repo 'exam\korean\EX_review_keywords.pdf'
-#         $dstDir  = Split-Path -Parent $dstPath
-#         if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
-#         Copy-Item -LiteralPath $rvMatch[0].FullName -Destination $dstPath -Force
-#         $copied++
-#         Write-Host '  OK  exam\korean\EX_review_keywords.pdf'
-#     }
-# }
+# ---------------- COURSE REVIEW SHEET (Lectures 1-15) -> Week 4, Session 16 ----------------
+# Philip rebuilt this on 2026-08-21 after pulling the first version: it now carries the
+# keywords AND a short pop quiz per chapter, and ships as a PAIR --
+#   ..._1-15_<student>_fin.pdf   16 pp, keywords + questions   -> POSTED
+#   ..._1-15_<prof>_fin.pdf      28 pp, with the answers       -> NOT posted (same rule as
+#                                                                 the professor lecture notes)
+# Both names are Hangul apart from '1-15_' and ' fin', so filter on '*1-15_*fin.pdf' -- the
+# underscore keeps the withdrawn keyword-only file ('... 1-15 (...)') from matching -- then
+# split the pair with the same student/professor code-point markers used above.
+# Korean only; there is no English PDF.
+$rvSrc = Join-Path (Split-Path -Parent $src) 'Exam'
+if (Test-Path -LiteralPath $rvSrc) {
+    $KO_STUDENT = [string]::Concat([char]0xD559, [char]0xC0DD, [char]0xC6A9)   # student
+    $KO_PROF    = [string]::Concat([char]0xAD50, [char]0xC218, [char]0xC6A9)   # professor
+    $rvMatch = @(Get-ChildItem -LiteralPath $rvSrc -Filter '*1-15_*fin.pdf' -File -ErrorAction SilentlyContinue |
+                 Where-Object { $_.Name -like ('*' + $KO_STUDENT + '*') -and $_.Name -notlike ('*' + $KO_PROF + '*') })
+    if ($rvMatch.Count -eq 0) {
+        $missing += 'Exam: exam\korean\EX_review_student.pdf'
+    } else {
+        if ($rvMatch.Count -gt 1) { Write-Host ("  WARN EX_review_student.pdf matched {0} files; using first" -f $rvMatch.Count) -ForegroundColor Yellow }
+        $dstPath = Join-Path $repo 'exam\korean\EX_review_student.pdf'
+        $dstDir  = Split-Path -Parent $dstPath
+        if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+        Copy-Item -LiteralPath $rvMatch[0].FullName -Destination $dstPath -Force
+        $copied++
+        Write-Host '  OK  exam\korean\EX_review_student.pdf'
+    }
+}
 
 # ---------------- WEEK 0 (Course Resources: syllabus + accounting terminology) ----------------
 # The terminology glossaries live in the "Other Resources web" subfolder, split into
